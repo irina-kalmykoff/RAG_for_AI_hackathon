@@ -89,6 +89,13 @@ tr.total td{font-weight:600}
 .report .hit{background:var(--surface)}
 details summary{cursor:pointer;font-weight:600;color:var(--accent)}
 details[open] summary{margin-bottom:12px}
+.downloads{display:flex;flex-direction:column;gap:12px}
+.dl-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.dl{display:flex;flex-direction:column;gap:2px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);text-decoration:none}
+.dl:hover{border-color:var(--accent)}
+.dl:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.dl .name{font-weight:600;color:var(--accent)}
+.dl .file{font-family:var(--mono);font-size:12px;color:var(--muted)}
 footer{color:var(--muted);font-size:13px;max-width:70ch}
 @media (max-width:560px){
   .step{grid-template-columns:1fr}
@@ -171,6 +178,19 @@ footer{color:var(--muted);font-size:13px;max-width:70ch}
       <summary>Browse the full report (14 excerpts)</summary>
       <div class="results" id="all"></div>
     </details>
+  </section>
+
+  <section class="downloads" aria-labelledby="dl-h">
+    <h2 id="dl-h">Download the data</h2>
+    <p class="muted">Figures in EUR thousand, costs as negative numbers. If everything lands in one column in Excel, open the file with Data › From Text/CSV instead.</p>
+    <div class="dl-list">
+      <a class="dl" href="data/income-statement.csv" download><span class="name">Income statement</span><span class="file">income-statement.csv</span></a>
+      <a class="dl" href="data/balance-sheet.csv" download><span class="name">Balance sheet</span><span class="file">balance-sheet.csv</span></a>
+      <a class="dl" href="data/key-figures.csv" download><span class="name">Key figures</span><span class="file">key-figures.csv</span></a>
+      <a class="dl" href="data/revenue-by-channel.csv" download><span class="name">Revenue by channel</span><span class="file">revenue-by-channel.csv</span></a>
+      <a class="dl" href="data/net-finance-costs.csv" download><span class="name">Net finance costs</span><span class="file">net-finance-costs.csv</span></a>
+      <a class="dl" href="data/annual-report-excerpts.csv" download><span class="name">All 14 report excerpts</span><span class="file">annual-report-excerpts.csv</span></a>
+    </div>
   </section>
 
   <footer>A real RAG system does steps 3 and 4 automatically, often with a smarter search that matches meaning, not just words. The idea stays the same: the answer can only be as good as the pages it was given.</footer>

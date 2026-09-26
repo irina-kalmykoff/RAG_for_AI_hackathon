@@ -12,6 +12,7 @@ A trap question shows that a well-cited answer can still be wrong when retrieval
 ## Files
 
 - `index.html`: the participant page (questions, report search, copy-ready prompts).
+- `data/`: the report as CSV files (five financial tables in EUR thousand, plus all 14 text excerpts), linked from the participant page for download. UTF-8 with BOM so Excel shows € and accents correctly.
 - `facilitator-mf25-key.html`: run sheet, answer key and debrief points. Not linked from the participant page; don't share its address with participants.
 
 ## Deploy
