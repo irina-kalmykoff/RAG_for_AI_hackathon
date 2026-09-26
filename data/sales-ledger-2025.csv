@@ -1,0 +1,210 @@
+﻿Invoice no,Date,Customer,Channel,Document type,Amount (EUR),Source system
+INV-25009,2025-01-04,Hotel Aurelia,Wholesale,Invoice,8476.57,ERP
+INV-25005,2025-01-05,Hotel Belfort Suites,Wholesale,Invoice,8683.27,ERP
+INV-25006,2025-01-06,Vergaderzalen Linde,Wholesale,Invoice,4487.63,ERP
+INV-25008,2025-01-15,Bistro Oude Markt,Wholesale,Invoice,3431.24,ERP
+INV-25004,2025-01-15,Brasserie De Klok,Wholesale,Invoice,7656.84,ERP
+INV-25002,2025-01-18,Kantoorpark Zuid NV,Wholesale,Invoice,15876.91,ERP
+INV-25003,2025-01-19,Hotel Ter Aa,Wholesale,Invoice,9351.48,ERP
+INV-25001,2025-01-20,Grand Hotel Scheldezicht,Wholesale,Invoice,17496.21,ERP
+INV-25010,2025-01-20,Restaurant Veldzicht,Wholesale,Invoice,3109.50,ERP
+INV-25012,2025-01-27,Café Noord BV,Wholesale,Invoice,2539.05,ERP
+INV-25007,2025-01-27,Co-work Dok,Whole sale,Invoice,3927.90,ERP
+INV-25011,2025-01-27,Kantoren Meir Plaza,WHOLESALE,Invoice,7392.93,ERP
+,31/01/2025,Café Antwerpen Zuid,Cafés,Monthly takings,"46.919,08",Café till system
+,31/01/2025,Café Gent Kouter,Cafes,Monthly takings,"48.955,67",Café till system
+,31/01/2025,Café Leuven Ladeuze,cafés,Monthly takings,"40.755,29",Café till system
+INV-25013,2025-01-31,Web shop (monthly batch),Online,Invoice,55248.39,ERP
+INV-25015,2025-02-03,Kantoorpark Zuid NV,Wholesale,Invoice,14401.82,ERP
+INV-25018,2025-02-04,Hotel Belfort Suites,wholesale ,Invoice,7963.38,ERP
+INV-25017,2025-02-06,Brasserie De Klok,Whole sale,Invoice,6922.77,ERP
+INV-25019,2025-02-07,Vergaderzalen Linde,Wholesale,Invoice,5282.25,ERP
+INV-25022,2025-02-11,Hotel Aurelia,Wholesale,Invoice,8059.27,ERP
+INV-25020,2025-02-14,Co-work Dok,Wholesale,Invoice,3766.71,ERP
+INV-25025,2025-02-17,Café Noord BV,wholesale ,Invoice,2826.54,ERP
+INV-25014,2025-02-17,Grand Hotel Scheldezicht,Wholesale,Invoice,19126.82,ERP
+INV-25016,2025-02-20,Hotel Ter Aa,Wholesale,Invoice,10003.74,ERP
+INV-25021,2025-02-21,Bistro Oude Markt,Wholesale,Invoice,3853.92,ERP
+INV-25023,2025-02-21,Restaurant Veldzicht,Wholesale,Invoice,2798.74,ERP
+INV-25024,2025-02-26,Kantoren Meir Plaza,Wholesale,Invoice,6251.74,ERP
+,28/02/2025,Café Antwerpen Zuid,cafés,Monthly takings,"39.759,40",Café till system
+,28/02/2025,Café Gent Kouter,Cafés,Monthly takings,"50.501,82",Café till system
+,28/02/2025,Café Leuven Ladeuze,Cafés,Monthly takings,"31.381,72",Café till system
+INV-25026,2025-02-28,Web shop (monthly batch),Online,Invoice,56634.05,ERP
+INV-25038,2025-03-07,Café Noord BV,Whole sale,Invoice,2380.28,ERP
+INV-25030,2025-03-10,Brasserie De Klok,Wholesale,Invoice,7149.59,ERP
+INV-25033,2025-03-11,Co-work Dok,Wholesale,Invoice,4944.65,ERP
+INV-25036,2025-03-11,Restaurant Veldzicht,Wholesale,Invoice,3142.43,ERP
+INV-25034,2025-03-12,Bistro Oude Markt,Wholesale,Invoice,3737.42,ERP
+INV-25032,2025-03-12,Vergaderzalen Linde,Wholesale,Invoice,4671.04,ERP
+INV-25029,2025-03-13,Hotel Ter Aa,Wholesale,Invoice,12172.73,ERP
+CN-803,2025-03-15,Hotel Belfort Suites,Wholesale,Credit note,6000.00,ERP
+INV-25027,2025-03-16,Grand Hotel Scheldezicht,Wholesale,Invoice,20928.76,ERP
+INV-25035,2025-03-20,Hotel Aurelia,Wholesale,Invoice,7331.09,ERP
+INV-25031,2025-03-20,Hotel Belfort Suites,wholesale ,Invoice,9084.23,ERP
+INV-25028,2025-03-21,Kantoorpark Zuid NV,WHOLESALE,Invoice,12019.51,ERP
+INV-25037,2025-03-21,Kantoren Meir Plaza,Wholesale,Invoice,6874.30,ERP
+,31/03/2025,Café Antwerpen Zuid,cafés,Monthly takings,"46.816,28",Café till system
+,31/03/2025,Café Gent Kouter,Cafés,Monthly takings,"48.256,43",Café till system
+,31/03/2025,Café Leuven Ladeuze,cafés,Monthly takings,"36.516,84",Café till system
+INV-25039,2025-03-31,Web shop (monthly batch),Online,Invoice,58339.70,ERP
+,,Q1 TOTAL,,,454345.40,ERP
+INV-25047,2025-04-09,Bistro Oude Markt,Wholesale,Invoice,3482.80,ERP
+INV-25046,2025-04-09,Co-work Dok,Wholesale,Invoice,3922.00,ERP
+INV-25043,2025-04-12,Brasserie De Klok,Wholesale,Invoice,7698.04,ERP
+INV-25042,2025-04-13,Hotel Ter Aa,WHOLESALE,Invoice,11046.45,ERP
+INV-25045,2025-04-16,Vergaderzalen Linde,WHOLESALE,Invoice,5492.31,ERP
+INV-25048,2025-04-17,Hotel Aurelia,Wholesale,Invoice,9072.66,ERP
+INV-25044,2025-04-19,Hotel Belfort Suites,Wholesale,Invoice,10074.92,ERP
+INV-25041,2025-04-19,Kantoorpark Zuid NV,WHOLESALE,Invoice,15752.22,ERP
+INV-25050,2025-04-19,Kantoren Meir Plaza,Wholesale,Invoice,5632.53,ERP
+INV-25040,2025-04-20,Grand Hotel Scheldezicht,Wholesale,Invoice,20427.32,ERP
+INV-25051,2025-04-21,Café Noord BV,Whole sale,Invoice,2744.46,ERP
+INV-25049,2025-04-27,Restaurant Veldzicht,Wholesale,Invoice,2775.57,ERP
+,30/04/2025,Café Antwerpen Zuid,Cafés,Monthly takings,"46.524,42",Café till system
+,30/04/2025,Café Gent Kouter,Cafes,Monthly takings,"43.314,53",Café till system
+,30/04/2025,Café Leuven Ladeuze,Cafés,Monthly takings,"39.855,04",Café till system
+INV-25052,2025-04-30,Web shop (monthly batch),Online,Invoice,58793.79,ERP
+INV-25059,2025-05-05,Co-work Dok,Whole sale,Invoice,4856.45,ERP
+INV-25060,2025-05-07,Bistro Oude Markt,Wholesale,Invoice,3596.45,ERP
+INV-25056,2025-05-07,Brasserie De Klok,WHOLESALE,Invoice,7263.10,ERP
+INV-25054,2025-05-07,Kantoorpark Zuid NV,Wholesale,Invoice,14966.22,ERP
+INV-25057,2025-05-10,Hotel Belfort Suites,Wholesale,Invoice,9283.05,ERP
+INV-25053,2025-05-13,Grand Hotel Scheldezicht,Wholesale,Invoice,18556.20,ERP
+INV-25055,2025-05-13,Hotel Ter Aa,Wholesale,Invoice,11796.56,ERP
+INV-25061,2025-05-16,Hotel Aurelia,Wholesale,Invoice,7745.68,ERP
+INV-25058,2025-05-17,Vergaderzalen Linde,Wholesale,Invoice,5655.71,ERP
+INV-25064,2025-05-20,Café Noord BV,WHOLESALE,Invoice,2571.70,ERP
+INV-25063,2025-05-24,Kantoren Meir Plaza,Wholesale,Invoice,6906.60,ERP
+INV-25062,2025-05-25,Restaurant Veldzicht,Wholesale,Invoice,3379.95,ERP
+,31/05/2025,Café Antwerpen Zuid,Cafes,Monthly takings,"39.191,98",Café till system
+,31/05/2025,Café Gent Kouter,Cafes,Monthly takings,"47.232,06",Café till system
+,31/05/2025,Café Leuven Ladeuze,Cafés,Monthly takings,"38.313,27",Café till system
+INV-25065,2025-05-31,Web shop (monthly batch),Online,Invoice,58025.20,ERP
+INV-25068,2025-06-05,Hotel Ter Aa,Wholesale,Invoice,12613.57,ERP
+INV-25073,2025-06-06,Bistro Oude Markt,Wholesale,Invoice,4226.38,ERP
+INV-25076,2025-06-06,Kantoren Meir Plaza,Wholesale,Invoice,6271.60,ERP
+INV-25069,2025-06-07,Brasserie De Klok,Wholesale,Invoice,7067.02,ERP
+INV-25074,2025-06-10,Hotel Aurelia,Whole sale,Invoice,9340.01,ERP
+INV-25067,2025-06-13,Kantoorpark Zuid NV,Wholesale,Invoice,12991.45,ERP
+INV-25066,2025-06-14,Grand Hotel Scheldezicht,Wholesale,Invoice,20104.89,ERP
+INV-25072,2025-06-16,Co-work Dok,Wholesale,Invoice,4082.07,ERP
+INV-25071,2025-06-16,Vergaderzalen Linde,Wholesale,Invoice,5387.54,ERP
+INV-25070,2025-06-19,Hotel Belfort Suites,Wholesale,Invoice,8875.27,ERP
+INV-25075,2025-06-22,Restaurant Veldzicht,Wholesale,Invoice,2779.77,ERP
+INV-25077,2025-06-26,Café Noord BV,Wholesale,Invoice,2504.02,ERP
+,30/06/2025,Café Antwerpen Zuid,Cafés,Monthly takings,"43.444,84",Café till system
+,30/06/2025,Café Gent Kouter,Cafes,Monthly takings,"41.384,69",Café till system
+,30/06/2025,Café Leuven Ladeuze,Cafes,Monthly takings,"37.366,51",Café till system
+INV-25078,2025-06-30,Web shop (monthly batch),Online,Invoice,54362.59,ERP
+,,Q2 TOTAL,,,462124.12,ERP
+INV-25081,2025-07-03,Hotel Ter Aa,Whole sale,Invoice,12417.62,ERP
+INV-25082,2025-07-06,Brasserie De Klok,Wholesale,Invoice,8196.01,ERP
+INV-25085,2025-07-10,Co-work Dok,wholesale ,Invoice,4530.14,ERP
+INV-25079,2025-07-11,Grand Hotel Scheldezicht,WHOLESALE,Invoice,19103.27,ERP
+INV-25090,2025-07-12,Café Noord BV,Wholesale,Invoice,2851.88,ERP
+INV-25084,2025-07-13,Vergaderzalen Linde,Wholesale,Invoice,5601.76,ERP
+CN-807,2025-07-15,Hotel Belfort Suites,Wholesale,Credit note,6000.00,ERP
+INV-25088,2025-07-15,Restaurant Veldzicht,Wholesale,Invoice,3152.81,ERP
+INV-25089,2025-07-16,Kantoren Meir Plaza,Wholesale,Invoice,7025.70,ERP
+INV-25083,2025-07-21,Hotel Belfort Suites,Wholesale,Invoice,9258.39,ERP
+INV-25086,2025-07-22,Bistro Oude Markt,Wholesale,Invoice,3629.79,ERP
+INV-25080,2025-07-22,Kantoorpark Zuid NV,Whole sale,Invoice,12151.87,ERP
+INV-25087,2025-07-23,Hotel Aurelia,WHOLESALE,Invoice,7103.71,ERP
+,31/07/2025,Café Antwerpen Zuid,cafés,Monthly takings,"37.287,96",Café till system
+,31/07/2025,Café Gent Kouter,Cafés,Monthly takings,"48.764,25",Café till system
+,31/07/2025,Café Leuven Ladeuze,Cafés,Monthly takings,"33.590,43",Café till system
+INV-25091,2025-07-31,Web shop (monthly batch),Online,Invoice,54595.24,ERP
+INV-25093,2025-08-04,Kantoorpark Zuid NV,Wholesale,Invoice,13401.80,ERP
+INV-25101,2025-08-05,Restaurant Veldzicht,Wholesale,Invoice,3450.27,ERP
+INV-25103,2025-08-06,Café Noord BV,wholesale ,Invoice,3146.64,ERP
+INV-25099,2025-08-15,Bistro Oude Markt,wholesale ,Invoice,4420.76,ERP
+INV-25100,2025-08-16,Hotel Aurelia,Wholesale,Invoice,7090.45,ERP
+INV-25096,2025-08-20,Hotel Belfort Suites,WHOLESALE,Invoice,8053.01,ERP
+INV-25092,2025-08-23,Grand Hotel Scheldezicht,Wholesale,Invoice,22973.59,ERP
+INV-25098,2025-08-24,Co-work Dok,Wholesale,Invoice,4719.87,ERP
+INV-25095,2025-08-25,Brasserie De Klok,wholesale ,Invoice,7688.73,ERP
+INV-25097,2025-08-25,Vergaderzalen Linde,Wholesale,Invoice,5402.46,ERP
+INV-25094,2025-08-27,Hotel Ter Aa,Wholesale,Invoice,11103.80,ERP
+INV-25102,2025-08-27,Kantoren Meir Plaza,Wholesale,Invoice,6180.00,ERP
+,31/08/2025,Café Antwerpen Zuid,Cafés,Monthly takings,"40.106,37",Café till system
+,31/08/2025,Café Gent Kouter,Cafés,Monthly takings,"52.579,28",Café till system
+,31/08/2025,Café Leuven Ladeuze,Cafés,Monthly takings,"36.471,25",Café till system
+INV-25104,2025-08-31,Web shop (monthly batch),Online,Invoice,58746.16,ERP
+INV-25116,2025-09-03,Café Noord BV,Wholesale,Invoice,3193.09,ERP
+INV-25115,2025-09-04,Kantoren Meir Plaza,Wholesale,Invoice,5632.98,ERP
+INV-25110,2025-09-06,Vergaderzalen Linde,Wholesale,Invoice,4957.53,ERP
+INV-25108,2025-09-07,Brasserie De Klok,Wholesale,Invoice,7600.93,ERP
+INV-25111,2025-09-11,Co-work Dok,Wholesale,Invoice,3815.82,ERP
+INV-25105,2025-09-11,Grand Hotel Scheldezicht,Wholesale,Invoice,17686.27,ERP
+INV-25114,2025-09-12,Restaurant Veldzicht,Wholesale,Invoice,3239.00,ERP
+INV-25109,2025-09-17,Hotel Belfort Suites,Wholesale,Invoice,10117.98,ERP
+INV-25112,2025-09-18,Bistro Oude Markt,Wholesale,Invoice,3316.36,ERP
+INV-25113,2025-09-22,Hotel Aurelia,Wholesale,Invoice,8824.64,ERP
+INV-25106,2025-09-25,Kantoorpark Zuid NV,Wholesale,Invoice,13439.66,ERP
+INV-25107,2025-09-27,Hotel Ter Aa,Wholesale,Invoice,11061.85,ERP
+,30/09/2025,Café Antwerpen Zuid,Cafés,Monthly takings,"42.924,63",Café till system
+,30/09/2025,Café Gent Kouter,Cafes,Monthly takings,"51.990,50",Café till system
+,30/09/2025,Café Leuven Ladeuze,Cafés,Monthly takings,"31.003,21",Café till system
+INV-25117,2025-09-30,Web shop (monthly batch),Online,Invoice,48947.92,ERP
+,,Q3 TOTAL,,,453829.76,ERP
+INV-25127,2025-10-06,Restaurant Veldzicht,wholesale ,Invoice,3020.98,ERP
+INV-25121,2025-10-07,Brasserie De Klok,WHOLESALE,Invoice,6719.45,ERP
+INV-25125,2025-10-08,Bistro Oude Markt,WHOLESALE,Invoice,3550.64,ERP
+INV-25122,2025-10-10,Hotel Belfort Suites,Wholesale,Invoice,8365.50,ERP
+INV-25128,2025-10-11,Kantoren Meir Plaza,wholesale ,Invoice,5901.80,ERP
+INV-25118,2025-10-14,Grand Hotel Scheldezicht,Wholesale,Invoice,22362.56,ERP
+INV-25120,2025-10-14,Hotel Ter Aa,Wholesale,Invoice,11485.12,ERP
+INV-25124,2025-10-18,Co-work Dok,Wholesale,Invoice,4260.99,ERP
+INV-25119,2025-10-20,Kantoorpark Zuid NV,Wholesale,Invoice,13289.84,ERP
+INV-25126,2025-10-22,Hotel Aurelia,Wholesale,Invoice,8914.40,ERP
+INV-25129,2025-10-24,Café Noord BV,Wholesale,Invoice,2613.14,ERP
+INV-25123,2025-10-24,Vergaderzalen Linde,WHOLESALE,Invoice,5197.45,ERP
+,31/10/2025,Café Antwerpen Zuid,cafés,Monthly takings,"35.556,25",Café till system
+,31/10/2025,Café Gent Kouter,cafés,Monthly takings,"47.760,34",Café till system
+,31/10/2025,Café Leuven Ladeuze,Cafés,Monthly takings,"39.426,42",Café till system
+INV-25130,2025-10-31,Web shop (monthly batch),Online,Invoice,48424.86,ERP
+INV-25136,2025-11-03,Vergaderzalen Linde,Wholesale,Invoice,4499.96,ERP
+INV-25133,2025-11-04,Hotel Ter Aa,Wholesale,Invoice,11049.88,ERP
+INV-25141,2025-11-05,Kantoren Meir Plaza,WHOLESALE,Invoice,7434.63,ERP
+INV-25134,2025-11-06,Brasserie De Klok,Whole sale,Invoice,7099.48,ERP
+INV-25139,2025-11-07,Hotel Aurelia,Wholesale,Invoice,7628.46,ERP
+INV-25138,2025-11-09,Bistro Oude Markt,Wholesale,Invoice,3726.39,ERP
+INV-25137,2025-11-12,Co-work Dok,Wholesale,Invoice,3830.24,ERP
+INV-25131,2025-11-15,Grand Hotel Scheldezicht,wholesale ,Invoice,20898.71,ERP
+CN-811,2025-11-15,Hotel Belfort Suites,Wholesale,Credit note,6000.00,ERP
+INV-25135,2025-11-18,Hotel Belfort Suites,Wholesale,Invoice,8437.71,ERP
+INV-25140,2025-11-23,Restaurant Veldzicht,Wholesale,Invoice,2649.30,ERP
+INV-25142,2025-11-25,Café Noord BV,WHOLESALE,Invoice,2388.15,ERP
+INV-25132,2025-11-25,Kantoorpark Zuid NV,Wholesale,Invoice,12815.07,ERP
+,30/11/2025,Café Antwerpen Zuid,Cafés,Monthly takings,"40.814,10",Café till system
+,30/11/2025,Café Gent Kouter,Cafes,Monthly takings,"48.192,64",Café till system
+,30/11/2025,Café Leuven Ladeuze,cafés,Monthly takings,"40.323,54",Café till system
+INV-25143,2025-11-30,Web shop (monthly batch),Online,Invoice,47541.18,ERP
+INV-25145,2025-12-04,Kantoorpark Zuid NV,Wholesale,Invoice,12755.01,ERP
+INV-25148,2025-12-05,Hotel Belfort Suites,Wholesale,Invoice,9744.13,ERP
+INV-25147,2025-12-07,Brasserie De Klok,Wholesale,Invoice,7889.00,ERP
+INV-25150,2025-12-07,Co-work Dok,Wholesale,Invoice,4059.88,ERP
+INV-25144,2025-12-07,Grand Hotel Scheldezicht,Whole sale,Invoice,17575.56,ERP
+INV-25155,2025-12-09,Café Noord BV,Wholesale,Invoice,2637.25,ERP
+INV-25149,2025-12-09,Vergaderzalen Linde,Wholesale,Invoice,5411.02,ERP
+INV-25152,2025-12-10,Hotel Aurelia,Whole sale,Invoice,7380.89,ERP
+INV-25154,2025-12-10,Kantoren Meir Plaza,wholesale ,Invoice,6213.21,ERP
+INV-25153,2025-12-20,Restaurant Veldzicht,wholesale ,Invoice,2815.44,ERP
+INV-25146,2025-12-24,Hotel Ter Aa,WHOLESALE,Invoice,12573.23,ERP
+INV-25151,2025-12-25,Bistro Oude Markt,Wholesale,Invoice,3799.87,ERP
+,31/12/2025,Café Antwerpen Zuid,Cafés,Monthly takings,"42.709,00",Café till system
+,31/12/2025,Café Gent Kouter,cafés,Monthly takings,"53.445,99",Café till system
+,31/12/2025,Café Leuven Ladeuze,Cafés,Monthly takings,"36.719,28",Café till system
+INV-25156,2025-12-31,Web shop (monthly batch),Online,Invoice,59541.09,ERP
+,,Q4 TOTAL,,,442501.47,ERP
+INV-25002,2025-01-18,Kantoorpark Zuid NV,Wholesale,Invoice,15876.91,ERP
+INV-25015,2025-02-03,Kantoorpark Zuid NV,Wholesale,Invoice,14401.82,ERP
+INV-25028,2025-03-21,Kantoorpark Zuid NV,WHOLESALE,Invoice,12019.51,ERP
+INV-25041,2025-04-19,Kantoorpark Zuid NV,WHOLESALE,Invoice,15752.22,ERP
+INV-25054,2025-05-07,Kantoorpark Zuid NV,Wholesale,Invoice,14966.22,ERP
+INV-25067,2025-06-13,Kantoorpark Zuid NV,Wholesale,Invoice,12991.45,ERP
+INV-25080,2025-07-22,Kantoorpark Zuid NV,Whole sale,Invoice,12151.87,ERP
+INV-25093,2025-08-04,Kantoorpark Zuid NV,Wholesale,Invoice,13401.80,ERP
+INV-25106,2025-09-25,Kantoorpark Zuid NV,Wholesale,Invoice,13439.66,ERP
+INV-25119,2025-10-20,Kantoorpark Zuid NV,Wholesale,Invoice,13289.84,ERP
