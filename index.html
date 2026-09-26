@@ -128,12 +128,20 @@ footer{color:var(--muted);font-size:13px;max-width:70ch}
       <div class="num" aria-hidden="true">2</div>
       <div class="step-body">
         <h2>Ask the chatbot directly</h2>
-        <p class="hint">Copy this prompt, paste it into ChatGPT (or Copilot, Gemini…), and note what it says. Does it give numbers? Where do they come from?</p>
+        <p class="hint"><strong>2a.</strong> Copy this prompt, paste it into ChatGPT (or Copilot, Gemini…), and note what it says. Modern chatbots often say they don't know. That's honest, but it leaves you without an answer.</p>
         <div class="panel">
-          <textarea id="direct" rows="3" aria-label="Prompt without documents"></textarea>
+          <textarea id="direct" rows="3" aria-label="Plain question without documents"></textarea>
           <div class="row">
             <button class="btn" id="copyDirect" type="button">Copy prompt</button>
             <span class="status" id="stDirect" role="status"></span>
+          </div>
+        </div>
+        <p class="hint"><strong>2b.</strong> Now ask the way people do on a deadline: you need numbers for your spreadsheet. Paste this into a <strong>new chat</strong>. Write down the figures it gives; you'll check them against the report in step 4.</p>
+        <div class="panel">
+          <textarea id="direct2" rows="4" aria-label="Prompt asking for figures without documents"></textarea>
+          <div class="row">
+            <button class="btn" id="copyDirect2" type="button">Copy prompt</button>
+            <span class="status" id="stDirect2" role="status"></span>
           </div>
         </div>
       </div>
@@ -233,9 +241,9 @@ const E = [
 ];
 
 const Q = [
- {tag:"Question A",text:"What was the operating profit in 2025, and why did it change compared with 2024?",search:"operating profit 2025 why change"},
- {tag:"Question B",text:"Is the company at risk with its bank loan?",search:"risk bank loan"},
- {tag:"Bonus",text:"What is the interest coverage ratio for 2025 (operating profit divided by interest expense)?",search:"interest coverage operating profit interest expense"}
+ {tag:"Question A",text:"What was the operating profit in 2025, and why did it change compared with 2024?",search:"operating profit 2025 why change",cols:"Revenue (EUR m), Operating profit/EBIT (EUR m), EBIT margin (%), Main reason for the change in EBIT"},
+ {tag:"Question B",text:"Is the company at risk with its bank loan?",search:"risk bank loan",cols:"Net debt (EUR m), EBITDA (EUR m), Net debt / EBITDA (x), Covenant limit (x), Covenant risk (low / medium / high)"},
+ {tag:"Bonus",text:"What is the interest coverage ratio for 2025 (operating profit divided by interest expense)?",search:"interest coverage operating profit interest expense",cols:"Operating profit/EBIT (EUR m), Interest expense (EUR m), Interest coverage (x)"}
 ];
 
 /* ---------- search ---------- */
@@ -290,6 +298,7 @@ function renderQuestions(){
 function pickQuestion(i){
   state.q = i; renderQuestions();
   $("direct").value = `${CO} is a Belgian specialty coffee company. ${Q[i].text} Give your best answer with figures.`;
+  $("direct2").value = `I'm building a peer comparison in Excel for Belgian food & beverage companies. Fill in this table for ${CO} (Ghent) for FY2025: ${Q[i].cols}. No blank cells please: where you don't have the exact figure, give your best estimate. Return only the table.`;
   $("search").value = Q[i].search;
   runSearch(true);
 }
@@ -341,6 +350,7 @@ async function copy(id, st){
   setTimeout(()=>{ $(st).textContent=""; }, 4000);
 }
 $("copyDirect").addEventListener("click", ()=>copy("direct","stDirect"));
+$("copyDirect2").addEventListener("click", ()=>copy("direct2","stDirect2"));
 $("copyRag").addEventListener("click", ()=>copy("rag","stRag"));
 let t; $("search").addEventListener("input", ()=>{ clearTimeout(t); t=setTimeout(()=>runSearch(true),200); });
 $("topn").addEventListener("change", ()=>runSearch(true));

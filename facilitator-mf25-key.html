@@ -67,7 +67,7 @@ td.t{font-family:var(--mono);font-size:13px;white-space:nowrap;color:var(--muted
       <thead><tr><th>Time</th><th>What happens</th></tr></thead>
       <tbody>
         <tr><td class="t">0–2 min</td><td>Frame it. <span class="say">“Marlow &amp; Finch is invented. No AI has ever seen its figures. Let's see what happens when we ask anyway.”</span></td></tr>
-        <tr><td class="t">2–5 min</td><td><strong>Question A, step 2:</strong> everyone asks directly. Collect a few answers out loud. Compare them: different people usually get different numbers, or a polite refusal.</td></tr>
+        <tr><td class="t">2–5 min</td><td><strong>Question A, step 2:</strong> 2a (plain question) usually gets a polite “I don't know”. Then 2b (“fill my Excel table, no blank cells”) gets invented figures. Collect a few 2b answers out loud: people get different numbers for the same company.</td></tr>
         <tr><td class="t">5–9 min</td><td><strong>Question A, steps 3–4:</strong> search, paste, ask in a new chat. Everyone should now get the same, correct answer with excerpt citations.</td></tr>
         <tr><td class="t">9–13 min</td><td><strong>Question B</strong> (the trap). Let them run it with the default search, then reveal the missing excerpt.</td></tr>
         <tr><td class="t">13–15 min</td><td>Debrief (three points below). Fast finishers can try the Bonus question.</td></tr>
@@ -85,7 +85,8 @@ td.t{font-family:var(--mono);font-size:13px;white-space:nowrap;color:var(--muted
       <dl class="kv">
         <dt>Excerpts needed</dt><dd><span class="eid">E4</span> or <span class="eid">E3</span> for the figures, <span class="eid">E6</span> for the reason; <span class="eid">E7</span>, <span class="eid">E8</span> add detail.</dd>
         <dt>Default search finds</dt><dd>E4, E3, E6: enough for a good answer.</dd>
-        <dt>Direct prompt</dt><dd>Either invents numbers (often confidently, sometimes with a plausible story about coffee prices, which is a lucky guess) or says it has no data. Both make the point.</dd>
+        <dt>2a, plain question</dt><dd>Usually refuses, or searches the web, finds nothing, and asks you to upload the report. Point out: <span class="say">“It's asking for exactly what we'll give it in step 4.”</span></dd>
+        <dt>2b, “no blank cells”</dt><dd>Invents figures. In a test run (ChatGPT, logged out, September 2026) it gave revenue €8.5m (actual €48.6m), EBIT €0.9m (actual €3.9m) and net debt/EBITDA 1.5x (actual 2.9x, or 3.6x after the acquisition), each tagged “(est.)”. Ask: <span class="say">“Once you paste this into Excel, does the ‘(est.)’ survive?”</span></dd>
       </dl>
     </div>
 
@@ -115,7 +116,7 @@ td.t{font-family:var(--mono);font-size:13px;white-space:nowrap;color:var(--muted
   <section>
     <h2>Debrief: three points</h2>
     <ol>
-      <li><strong>Without documents, the AI guesses.</strong> It sounds equally sure whether it knows or not. For company-specific figures, never trust a direct answer.</li>
+      <li><strong>Without documents, the AI either refuses or, when pushed, guesses.</strong> A refusal leaves you with nothing; a guess looks like data once it is in a spreadsheet. For company-specific figures, never trust a direct answer.</li>
       <li><strong>With the right documents, it becomes a fast, careful reader.</strong> It quotes figures, shows its sources, and different people get the same answer.</li>
       <li><strong>The answer is only as good as what was retrieved.</strong> Question B was wrong because the key page was never found. Always ask: what did it look at, and what might be missing?</li>
     </ol>
@@ -127,7 +128,7 @@ td.t{font-family:var(--mono);font-size:13px;white-space:nowrap;color:var(--muted
     <ul>
       <li>If ChatGPT searches the web in step 2, that's fine: it finds nothing, because the company doesn't exist.</li>
       <li>Tell people to open a <strong>new chat</strong> for step 4, so the earlier guess doesn't leak into the answer.</li>
-      <li>Chatbots vary. A cautious model may refuse in step 2 instead of inventing numbers. Point out that a refusal is honest, but still leaves you without an answer.</li>
+      <li>Chatbots vary between runs. If a 2b answer refuses too, add “Use comparable Belgian specialty coffee roasters as the basis for your estimates.” The point stands either way: without the report you get a refusal or a guess, never the real figure.</li>
       <li>In a real RAG tool (Copilot on SharePoint, ChatGPT with uploaded files), steps 3 and 4 happen automatically and invisibly. That makes the Question B lesson more important: you don't see what was retrieved unless it cites its sources.</li>
     </ul>
   </section>
