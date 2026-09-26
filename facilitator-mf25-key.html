@@ -132,7 +132,8 @@ td.t{font-family:var(--mono);font-size:13px;white-space:nowrap;color:var(--muted
       </table></div>
       <dl class="kv">
         <dt>Summing blindly</dt><dd>Every plain number in the Amount column gives €3,763,893: about €460k too high. It looks plausible, but it's made of double-counted wholesale and missing cafés.</dd>
-        <dt>Watch for</dt><dd>Does the chatbot mention any problem with the data <em>before</em> answering? Does it ask anything? Modern ChatGPT may catch some traps with its data analysis tool, rarely all six. Ask the room which traps it missed.</dd>
+        <dt>Test run</dt><dd>ChatGPT (Instant, logged in, September 2026) said it had “cleaned the ledger”: it fixed the channel names, the Belgian number format, the subtotal rows and the credit notes. It <strong>missed the duplicates</strong>: total €3,441,247 (€138k too high) and Kantoorpark Zuid NV as the #1 customer.</dd>
+        <dt>The follow-up</dt><dd>Have participants ask: <span class="say">“Before I send this to my manager: are there any other data quality issues in this file that could affect these numbers?”</span> In the test it then found the duplicates and gave exactly the correct figures. Point out: <span class="say">“It could find the problem all along. It just didn't check until someone asked.”</span></dd>
         <dt>The Excel round</dt><dd>Give participants 3 minutes in Excel to find traps themselves (filter on Customer, sort by invoice number, look at left-aligned amounts). Their Excel instincts usually beat the chatbot here.</dd>
       </dl>
       <div class="trap"><strong>The point:</strong> <span class="say">“The AI doesn't know your data is dirty. It gives a confident answer on whatever you give it. Cleaning and checking is still your job.”</span></div>
