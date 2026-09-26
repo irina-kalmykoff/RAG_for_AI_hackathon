@@ -4,7 +4,7 @@ from collections import defaultdict
 from pathlib import Path
 
 random.seed(2025)
-OUT = Path(r"C:\RAG_for_AI_hackathon\data\sales-ledger-2025.csv")
+OUT = Path(__file__).resolve().parent.parent / "data" / "sales-ledger-2025.csv"
 
 wholesale = {  # customer: typical monthly invoice (EUR)
     "Grand Hotel Scheldezicht": 20000, "Kantoorpark Zuid NV": 14000, "Hotel Ter Aa": 11000,
