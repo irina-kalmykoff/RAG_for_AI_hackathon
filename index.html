@@ -4,359 +4,223 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
-<style>body{margin:0}[hidden]{display:none!important}</style>
-<title>Marlow &amp; Finch RAG Lab</title>
+<title>Can You Trust the Total?</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600&display=swap">
 <style>
 :root{
   --bg:#F4F6F4; --surface:#FFFFFF; --sunk:#EAEEEB; --ink:#1B2420; --muted:#5A6862; --line:#D5DCD7;
-  --accent:#0E6B5F; --accent-ink:#FFFFFF; --accent-soft:#DDEFEA; --coffee:#7A4A28; --mark:#FBE7A6;
+  --accent:#0E6B5F; --accent-ink:#FFFFFF; --accent-soft:#DDEFEA;
+  --good:#1D6B34; --good-soft:#E1F2E4; --bad:#A3322A; --bad-soft:#FBE4E1;
   --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
   --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
 }
 @media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    color-scheme:dark;
+  :root:not([data-theme="light"]){color-scheme:dark;
     --bg:#111614; --surface:#18201D; --sunk:#0D1210; --ink:#E3E9E6; --muted:#9AA8A2; --line:#2C3833;
-    --accent:#4CC0AE; --accent-ink:#06201B; --accent-soft:#1B3631; --coffee:#D59D72; --mark:#5A4A12;
-  }
+    --accent:#4CC0AE; --accent-ink:#06201B; --accent-soft:#1B3631;
+    --good:#7FD69A; --good-soft:#15301E; --bad:#F2918A; --bad-soft:#3A1B18;}
 }
-:root[data-theme="dark"]{
-  color-scheme:dark;
+:root[data-theme="dark"]{color-scheme:dark;
   --bg:#111614; --surface:#18201D; --sunk:#0D1210; --ink:#E3E9E6; --muted:#9AA8A2; --line:#2C3833;
-  --accent:#4CC0AE; --accent-ink:#06201B; --accent-soft:#1B3631; --coffee:#D59D72; --mark:#5A4A12;
-}
+  --accent:#4CC0AE; --accent-ink:#06201B; --accent-soft:#1B3631;
+  --good:#7FD69A; --good-soft:#15301E; --bad:#F2918A; --bad-soft:#3A1B18;}
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font:15px/1.55 var(--sans);}
-.wrap{max-width:1080px;margin:0 auto;padding-inline:20px;padding-block:28px 64px;display:flex;flex-direction:column;gap:28px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 var(--sans)}
+.wrap{max-width:860px;margin:0 auto;padding-inline:20px;padding-block:28px 64px;display:flex;flex-direction:column;gap:28px}
 h1,h2,h3{text-wrap:balance;margin:0;line-height:1.2}
 h1{font-family:var(--serif);font-weight:600;font-size:clamp(26px,4vw,36px)}
 h2{font-size:19px;font-weight:600}
-h3{font-size:15px;font-weight:600}
-p{margin:0}
+p,ul{margin:0}
+ul{padding-left:20px;display:flex;flex-direction:column;gap:4px}
+code{font-family:var(--mono);font-size:.92em}
 .eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
 header{display:flex;flex-direction:column;gap:10px}
-header .lede{max-width:66ch;color:var(--muted)}
-.fict{display:inline-block;font-size:12px;border:1px solid var(--line);border-radius:4px;padding:1px 7px;color:var(--muted);background:var(--surface)}
-
-.questions{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
-.q{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:6px;padding:14px 16px;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
-.q:hover{border-color:var(--accent)}
-.q:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.q[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
-.q .tag{font-size:12px;color:var(--muted);font-weight:500}
-.q .txt{font-weight:500}
-
-.steps{display:flex;flex-direction:column;gap:18px}
+.lede{max-width:66ch;color:var(--muted)}
+.brief{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 16px;max-width:66ch}
 .step{display:grid;grid-template-columns:40px 1fr;gap:14px;align-items:start}
-.num{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:600;background:var(--sunk);color:var(--ink);border:1px solid var(--line)}
-.step-body{display:flex;flex-direction:column;gap:12px;min-width:0}
-.step-body .hint{color:var(--muted);max-width:70ch}
+.num{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:600;background:var(--sunk);border:1px solid var(--line)}
+.body{display:flex;flex-direction:column;gap:12px;min-width:0}
+.hint{color:var(--muted);max-width:70ch}
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:12px}
-textarea,input[type=text]{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:10px 12px}
-textarea{resize:vertical;min-height:64px}
-textarea:focus,input:focus{outline:2px solid var(--accent);outline-offset:0;border-color:transparent}
+.prompt{font-family:var(--mono);font-size:14px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:10px 12px;white-space:pre-wrap}
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.btn{font:inherit;font-weight:500;border-radius:6px;padding:9px 16px;cursor:pointer;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink)}
-.btn.ghost{background:transparent;color:var(--accent)}
+.btn{font:inherit;font-weight:500;border-radius:6px;padding:9px 16px;cursor:pointer;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);text-decoration:none;display:inline-block}
 .btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 .status{font-size:13px;color:var(--accent);font-weight:500;min-height:1.2em}
-select{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 8px}
-.muted{color:var(--muted);font-size:13px}
-
-.results{display:flex;flex-direction:column;gap:10px}
-.hit{border:1px solid var(--line);border-radius:8px;background:var(--bg);padding:12px 14px;display:flex;flex-direction:column;gap:8px}
-.hit.on{border-color:var(--accent);background:var(--accent-soft)}
-.hit-head{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.hit-head label{display:flex;gap:8px;align-items:center;cursor:pointer;font-weight:600}
-.eid{font-family:var(--mono);font-size:13px;color:var(--coffee);font-weight:500}
-.score{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)}
-.bar{width:80px;height:6px;border-radius:3px;background:var(--line);overflow:hidden}
-.bar i{display:block;height:100%;background:var(--accent)}
-.excerpt{font-family:var(--serif);font-size:15px;line-height:1.55}
-.excerpt p+p{margin-top:6px}
-mark{background:var(--mark);color:inherit;border-radius:2px;padding:0 1px}
-.tbl{overflow-x:auto}
-table{border-collapse:collapse;font-family:var(--sans);font-size:14px;font-variant-numeric:tabular-nums;min-width:320px}
-th,td{padding:4px 12px 4px 0;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
-th:first-child,td:first-child{text-align:left;white-space:normal}
-th{font-weight:600;color:var(--muted);font-size:12px}
-tr.total td{font-weight:600}
-
-.report{display:flex;flex-direction:column;gap:12px}
-.report .hit{background:var(--surface)}
+.check{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.verdict{border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.verdict h3{font-size:14px;font-weight:600}
+.verdict.good{background:var(--good-soft)} .verdict.good h3{color:var(--good)}
+.verdict.bad{background:var(--bad-soft)} .verdict.bad h3{color:var(--bad)}
+.verdict ul{font-size:14px}
+.num-tag{font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
+details{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 16px}
 details summary{cursor:pointer;font-weight:600;color:var(--accent)}
-details[open] summary{margin-bottom:12px}
-.downloads{display:flex;flex-direction:column;gap:12px}
-.dl-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
-.dl{display:flex;flex-direction:column;gap:2px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);text-decoration:none}
-.dl:hover{border-color:var(--accent)}
-.dl:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.dl .name{font-weight:600;color:var(--accent)}
-.dl .file{font-family:var(--mono);font-size:12px;color:var(--muted)}
-footer{color:var(--muted);font-size:13px;max-width:70ch}
-@media (max-width:560px){
-  .step{grid-template-columns:1fr}
-  .num{width:32px;height:32px}
-  .score{margin-left:0}
-}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+details[open] summary{margin-bottom:10px}
+details .inner{display:flex;flex-direction:column;gap:10px}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:6px 12px 6px 0;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;color:var(--muted);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.takeaway{border-left:3px solid var(--accent);padding:4px 0 4px 14px;font-family:var(--serif);font-size:18px;max-width:60ch}
+footer{color:var(--muted);font-size:13px;display:flex;flex-direction:column;gap:6px}
+footer a{color:var(--accent)}
+@media (max-width:600px){.step{grid-template-columns:1fr}.num{width:32px;height:32px}.check{grid-template-columns:1fr}}
 </style>
-
 </head>
 <body>
 <div class="wrap">
   <header>
-    <span class="eyebrow">Workshop exercise · AI for financial analysis</span>
-    <h1>Does the AI know, or does it guess?</h1>
-    <p class="lede">You'll ask a chatbot about the 2025 results of Marlow &amp; Finch Coffee Roasters NV twice: first on its own, then with the right pages of the annual report pasted in. The second way is called <strong>RAG</strong> (retrieval-augmented generation): look it up first, then answer.</p>
-    <span class="fict">Marlow &amp; Finch is a fictional company. No chatbot has ever seen this report.</span>
+    <span class="eyebrow">Workshop exercise · AI and dirty data</span>
+    <h1>Can you trust the total?</h1>
+    <div class="brief">You work in finance at Marlow &amp; Finch Coffee Roasters, a fictional Belgian coffee company. Your manager needs <strong>Q1 revenue and the biggest customer</strong> by 5 pm. You have the sales export from the accounting system, and you ask ChatGPT to do the sums.</div>
   </header>
 
-  <section class="steps" aria-label="Exercise steps">
-    <div class="step">
-      <div class="num" aria-hidden="true">1</div>
-      <div class="step-body">
-        <h2>Pick a question</h2>
-        <div class="questions" id="questions"></div>
-      </div>
+  <section class="step">
+    <div class="num" aria-hidden="true">1</div>
+    <div class="body">
+      <h2>Download the export</h2>
+      <p class="hint">41 rows, five columns. You may glance at it in Excel, but don't change anything yet.</p>
+      <div class="row"><a class="btn" href="data/sales-q1-2025.csv" download>Download sales-q1-2025.csv</a></div>
     </div>
+  </section>
 
-    <div class="step">
-      <div class="num" aria-hidden="true">2</div>
-      <div class="step-body">
-        <h2>Ask the chatbot directly</h2>
-        <p class="hint"><strong>2a.</strong> Copy this prompt, paste it into ChatGPT (or Copilot, Gemini…), and note what it says. Modern chatbots often say they don't know. That's honest, but it leaves you without an answer.</p>
-        <div class="panel">
-          <textarea id="direct" rows="3" aria-label="Plain question without documents"></textarea>
-          <div class="row">
-            <button class="btn" id="copyDirect" type="button">Copy prompt</button>
-            <span class="status" id="stDirect" role="status"></span>
-          </div>
-        </div>
-        <p class="hint"><strong>2b.</strong> Now ask the way people do on a deadline: you need numbers for your spreadsheet. Paste this into a <strong>new chat</strong>. Write down the figures it gives; you'll check them against the report in step 4.</p>
-        <div class="panel">
-          <textarea id="direct2" rows="4" aria-label="Prompt asking for figures without documents"></textarea>
-          <div class="row">
-            <button class="btn" id="copyDirect2" type="button">Copy prompt</button>
-            <span class="status" id="stDirect2" role="status"></span>
-          </div>
-        </div>
+  <section class="step">
+    <div class="num" aria-hidden="true">2</div>
+    <div class="body">
+      <h2>Upload it to ChatGPT and ask</h2>
+      <p class="hint">Open a new chat, attach the file with the <strong>+</strong> button, paste this prompt and send.</p>
+      <div class="panel">
+        <div class="prompt" id="p1">Here is our Q1 2025 sales export. What was our total revenue in Q1 2025, and who is our biggest customer?</div>
+        <div class="row"><button class="btn" type="button" data-copy="p1">Copy prompt</button><span class="status" role="status"></span></div>
       </div>
-    </div>
-
-    <div class="step">
-      <div class="num" aria-hidden="true">3</div>
-      <div class="step-body">
-        <h2>Look it up: search the annual report</h2>
-        <p class="hint">This is the “retrieval” in RAG. Type a few keywords, the search ranks the report's excerpts, and the best matches are ticked. You can untick one or tick others below.</p>
-        <div class="panel">
-          <input type="text" id="search" aria-label="Search the annual report">
-          <div class="row">
-            <label class="muted" for="topn">Tick the top</label>
-            <select id="topn"><option>2</option><option selected>3</option><option>4</option><option>5</option></select>
-            <span class="muted">matches automatically</span>
-          </div>
-          <div class="results" id="results" aria-live="polite"></div>
+      <div class="check">
+        <div class="verdict good">
+          <h3>✅ Good answer</h3>
+          <ul>
+            <li>Total revenue <span class="num-tag">€186,902</span></li>
+            <li>Biggest customer <strong>Grand Hotel Scheldezicht</strong> <span class="num-tag">(€55,104)</span></li>
+            <li>It mentions removing <strong>duplicate invoices</strong> and leaving out <strong>cancelled</strong> ones</li>
+          </ul>
         </div>
-      </div>
-    </div>
-
-    <div class="step">
-      <div class="num" aria-hidden="true">4</div>
-      <div class="step-body">
-        <h2>Ask again, with the excerpts</h2>
-        <p class="hint">This prompt holds your question plus the ticked excerpts. Paste it into a <strong>new chat</strong> and compare the answer with step 2.</p>
-        <div class="panel">
-          <p class="muted" id="selSummary"></p>
-          <textarea id="rag" rows="8" aria-label="Prompt with excerpts"></textarea>
-          <div class="row">
-            <button class="btn" id="copyRag" type="button">Copy prompt with excerpts</button>
-            <span class="status" id="stRag" role="status"></span>
-          </div>
+        <div class="verdict bad">
+          <h3>❌ It was fooled if you see</h3>
+          <ul>
+            <li><span class="num-tag">€243,079</span>, <span class="num-tag">€223,492</span> or <span class="num-tag">€206,490</span></li>
+            <li><strong>Kantoorpark Zuid NV</strong> as the biggest customer</li>
+            <li>No word about data problems, just a confident total</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="report" aria-label="Full annual report">
-    <details id="full">
-      <summary>Browse the full report (14 excerpts)</summary>
-      <div class="results" id="all"></div>
-    </details>
-  </section>
-
-  <section class="downloads" aria-labelledby="dl-h">
-    <h2 id="dl-h">Download the data</h2>
-    <p class="muted">Figures in EUR thousand, costs as negative numbers. If everything lands in one column in Excel, open the file with Data › From Text/CSV instead.</p>
-    <div class="dl-list">
-      <a class="dl" href="data/income-statement.csv" download><span class="name">Income statement</span><span class="file">income-statement.csv</span></a>
-      <a class="dl" href="data/balance-sheet.csv" download><span class="name">Balance sheet</span><span class="file">balance-sheet.csv</span></a>
-      <a class="dl" href="data/key-figures.csv" download><span class="name">Key figures</span><span class="file">key-figures.csv</span></a>
-      <a class="dl" href="data/revenue-by-channel.csv" download><span class="name">Revenue by channel</span><span class="file">revenue-by-channel.csv</span></a>
-      <a class="dl" href="data/net-finance-costs.csv" download><span class="name">Net finance costs</span><span class="file">net-finance-costs.csv</span></a>
-      <a class="dl" href="data/annual-report-excerpts.csv" download><span class="name">All 14 report excerpts</span><span class="file">annual-report-excerpts.csv</span></a>
-      <a class="dl" href="data/sales-q1-2025.csv" download><span class="name">Sales Q1 2025</span><span class="file">sales-q1-2025.csv</span></a>
-      <a class="dl" href="data/sales-ledger-2025.csv" download><span class="name">Sales ledger 2025 (raw export)</span><span class="file">sales-ledger-2025.csv</span></a>
+  <section class="step">
+    <div class="num" aria-hidden="true">3</div>
+    <div class="body">
+      <h2>Ask it to check its own work</h2>
+      <p class="hint">In the same chat, send this follow-up. Did the numbers change?</p>
+      <div class="panel">
+        <div class="prompt" id="p2">Before I send this to my manager: are there any data quality issues in this file that could affect these numbers?</div>
+        <div class="row"><button class="btn" type="button" data-copy="p2">Copy prompt</button><span class="status" role="status"></span></div>
+      </div>
+      <div class="check">
+        <div class="verdict good">
+          <h3>✅ Good answer</h3>
+          <ul>
+            <li>Finds <strong>5 duplicate invoices</strong> for Kantoorpark Zuid NV (same invoice numbers, e.g. INV-1003)</li>
+            <li>Finds <strong>3 cancelled invoices</strong> for Hotel Ter Aa</li>
+            <li>Corrects the total to <span class="num-tag">€186,902</span></li>
+          </ul>
+        </div>
+        <div class="verdict bad">
+          <h3>❌ Still fooled if</h3>
+          <ul>
+            <li>It says the data looks clean</li>
+            <li>It finds only one of the two problems</li>
+            <li>It repeats its first answer</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
-  <footer>A real RAG system does steps 3 and 4 automatically, often with a smarter search that matches meaning, not just words. The idea stays the same: the answer can only be as good as the pages it was given.</footer>
+  <section class="step">
+    <div class="num" aria-hidden="true">4</div>
+    <div class="body">
+      <h2>Find the problems yourself in Excel</h2>
+      <p class="hint">Three minutes. Two things are wrong with this export. Can you spot them without the AI?</p>
+      <details>
+        <summary>Hints</summary>
+        <div class="inner">
+          <ul>
+            <li>Sort by <strong>Invoice no</strong>. Does any number appear twice?</li>
+            <li>Filter the <strong>Status</strong> column. Which values are there, and should they all count as revenue?</li>
+          </ul>
+        </div>
+      </details>
+      <details>
+        <summary>Show the answer</summary>
+        <div class="inner">
+          <div class="tbl"><table>
+            <thead><tr><th>Problem</th><th>Where</th><th>Effect on the total</th></tr></thead>
+            <tbody>
+              <tr><td>Duplicate rows</td><td>The last 5 rows repeat Kantoorpark Zuid NV invoices already in the file (a second export pasted below the first)</td><td>+€36,590, and Kantoorpark wrongly becomes the #1 customer</td></tr>
+              <tr><td>Cancelled invoices</td><td>3 Hotel Ter Aa rows with Status “Cancelled”</td><td>+€19,588</td></tr>
+            </tbody>
+          </table></div>
+          <p>€186,902 + €36,590 + €19,588 = €243,079, the total you get by adding up the whole Amount column.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <p class="takeaway">The AI answered from the data it was given, confidently. It could find the problems, but only when someone asked. Checking is still your job.</p>
+
+  <details>
+    <summary>Harder version: a full-year ledger with six traps</summary>
+    <div class="inner">
+      <p class="hint">209 rows merged from two systems: duplicates, subtotal rows, Belgian number format, mixed date formats, inconsistent channel names and credit notes stored as positive amounts.</p>
+      <div class="row"><a class="btn" href="data/sales-ledger-2025.csv" download>Download sales-ledger-2025.csv</a></div>
+      <div class="panel">
+        <div class="prompt" id="p3">Here is our 2025 sales ledger export. What was total revenue in 2025, revenue per channel, and who are our top 3 wholesale customers?</div>
+        <div class="row"><button class="btn" type="button" data-copy="p3">Copy prompt</button><span class="status" role="status"></span></div>
+      </div>
+      <div class="check">
+        <div class="verdict good">
+          <h3>✅ Good answer</h3>
+          <ul>
+            <li>Total <span class="num-tag">€3,302,956</span></li>
+            <li>Wholesale <span class="num-tag">€1,117,601</span> · Online <span class="num-tag">€659,200</span> · Cafés <span class="num-tag">€1,526,155</span></li>
+            <li>Top 3: Grand Hotel Scheldezicht, Kantoorpark Zuid NV, Hotel Ter Aa</li>
+          </ul>
+        </div>
+        <div class="verdict bad">
+          <h3>❌ It was fooled if you see</h3>
+          <ul>
+            <li><span class="num-tag">€3,441,247</span> total or <strong>Kantoorpark Zuid NV</strong> at #1 (missed the duplicates)</li>
+            <li>More than three channels, or Cafés near €0</li>
+            <li>Any total above €3.4m</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <footer>
+    <p>Marlow &amp; Finch and all figures are fictional.</p>
+    <p>Second exercise: <a href="rag.html">Ask the annual report (RAG)</a>.</p>
+  </footer>
 </div>
-
 <script>
-const CO = "Marlow & Finch Coffee Roasters NV";
-const E = [
- {id:"E1",title:"Letter from the CEO",p:[
-  "2025 was a year of growth for Marlow & Finch. Revenue reached a record €48.6 million, driven by new wholesale contracts with hotel groups and three new cafés in Antwerp and Leuven.",
-  "Green coffee prices rose sharply during the year, which put pressure on our margins, but our pricing actions position us well for 2026. Our balance sheet remains strong and we continue to invest in growth. I want to thank our 212 employees for their dedication. — Sofie Marlow, CEO"]},
- {id:"E2",title:"About the company",p:[
-  "Marlow & Finch Coffee Roasters NV is a specialty coffee company founded in 2011 in Ghent, Belgium. The company roasts about 2,900 tonnes of coffee per year at its roastery in Ghent.",
-  "It sells through three channels: Wholesale (hotels, restaurants and offices), Cafés (17 company-owned cafés in Flanders) and Online (subscriptions and web shop). The financial year runs from 1 January to 31 December."]},
- {id:"E3",title:"Key figures",unit:"€ thousand",t:[["","2025","2024"],["Revenue","48,600","42,300"],["Gross profit","17,500","16,900"],["Operating profit (EBIT)","3,900","5,200"],["Net profit","2,140","3,300"],["Employees at year-end","212","188"],["Number of cafés","17","14"]]},
- {id:"E4",title:"Income statement",unit:"€ thousand",t:[["","2025","2024"],["Revenue","48,600","42,300"],["Cost of sales","(31,100)","(25,400)"],["Gross profit","17,500","16,900"],["Operating expenses","(13,600)","(11,700)"],["Operating profit (EBIT)","3,900","5,200"],["Net finance costs (Note 10)","(1,050)","(800)"],["Profit before tax","2,850","4,400"],["Income tax","(710)","(1,100)"],["Net profit","2,140","3,300"]],after:"Operating expenses include depreciation and amortisation of €2,100 thousand (2024: €1,900 thousand)."},
- {id:"E5",title:"Revenue by channel",unit:"€ million",t:[["","2025","2024"],["Wholesale","27.2","23.0"],["Cafés","15.1","12.9"],["Online","6.3","6.4"],["Total","48.6","42.3"]],after:"Online subscriptions declined slightly as some customers cancelled after the price increase."},
- {id:"E6",title:"Cost of sales and coffee prices",p:[
-  "Cost of sales rose to €31.1 million (2024: €25.4 million), or 64.0% of revenue compared with 60.0% a year earlier. The main cause was the price of green arabica beans, which averaged 38% higher than in 2024 after poor harvests in Brazil and Vietnam. This was the main reason operating profit fell.",
-  "The company had hedged about 40% of its 2025 bean needs at fixed prices; the remaining 60% was bought at market prices. Energy costs for roasting fell by 6%."]},
- {id:"E7",title:"Pricing and volumes",p:[
-  "To offset higher bean costs, Marlow & Finch raised its selling prices by an average of 9% on 1 April 2025. Volumes sold grew by 5%, mainly from new wholesale contracts.",
-  "Because the price increase only took effect in April, it covered the higher costs only partly during the year. Management expects the full-year effect to support operating margins in 2026."]},
- {id:"E8",title:"Operating expenses",p:[
-  "Operating expenses increased to €13.6 million (2024: €11.7 million). Staff costs rose by €1.2 million because of 24 additional employees for the new cafés and wage indexation of 3.6%.",
-  "Depreciation and amortisation was €2.1 million (2024: €1.9 million). Rent for the three new cafés added €0.4 million."]},
- {id:"E9",title:"Balance sheet summary",unit:"€ thousand, at 31 December",t:[["","2025","2024"],["Total assets","41,800","36,500"],["Equity","15,600","14,300"],["Borrowings","19,400","15,200"],["Cash","2,000","3,100"],["Net debt (borrowings − cash)","17,400","12,100"]]},
- {id:"E10",title:"Note 14 – Borrowings",p:[
-  "The company has a €14.0 million term loan and a €12.5 million revolving credit facility with its bank. At 31 December 2025, €5.4 million of the credit facility was drawn. Interest is charged at Euribor plus 2.25%. Interest expense on borrowings was €1.3 million in 2025 (2024: €0.95 million).",
-  "The loan agreement includes a financial covenant: net debt may not exceed 3.0 times EBITDA, tested on 30 June and 31 December. At 31 December 2025 the ratio was 2.9x (2024: 1.7x)."]},
- {id:"E11",title:"Note 10 – Net finance costs",unit:"€ thousand",t:[["","2025","2024"],["Interest expense on borrowings","(1,300)","(950)"],["Interest income on deposits","250","150"],["Net finance costs","(1,050)","(800)"]]},
- {id:"E12",title:"Risk management",p:[
-  "The main risks for the company are green coffee price volatility, competition in the specialty coffee market and dependence on key wholesale customers.",
-  "Liquidity risk is considered low: the company has a long-standing relationship with its bank, generates positive operating cash flow and has unused headroom on its credit facility. The company reviews its financial risks every month."]},
- {id:"E13",title:"Note 22 – Events after the balance sheet date",p:[
-  "On 15 January 2026 Marlow & Finch acquired Café Aurora, a chain of five cafés in Brussels, for €6.5 million, paid from the revolving credit facility. Including Café Aurora, pro forma net debt is €23.9 million and pro forma EBITDA €6.6 million, a ratio of 3.6x.",
-  "The lenders have agreed to waive the covenant test of 30 June 2026 and replace it with a test on 30 September 2026 at the same 3.0x limit. If the limit is exceeded then, the lenders can demand early repayment of all borrowings."]},
- {id:"E14",title:"Outlook 2026",p:[
-  "For 2026 management expects revenue growth of 15–20%, including Café Aurora, and a recovery in gross margin as the April 2025 price increase applies for the full year. Green coffee prices remain high. The company plans to open two more cafés."]}
-];
-
-const Q = [
- {tag:"Question A",text:"What was the operating profit in 2025, and why did it change compared with 2024?",search:"operating profit 2025 why change",cols:"Revenue (EUR m), Operating profit/EBIT (EUR m), EBIT margin (%), Main reason for the change in EBIT"},
- {tag:"Question B",text:"Is the company at risk with its bank loan?",search:"risk bank loan",cols:"Net debt (EUR m), EBITDA (EUR m), Net debt / EBITDA (x), Covenant limit (x), Covenant risk (low / medium / high)"},
- {tag:"Bonus",text:"What is the interest coverage ratio for 2025 (operating profit divided by interest expense)?",search:"interest coverage operating profit interest expense",cols:"Operating profit/EBIT (EUR m), Interest expense (EUR m), Interest coverage (x)"}
-];
-
-/* ---------- search ---------- */
-const STOP = new Set("a an and are as at be by can could did do does for from had has have how i in is it its of on or our than that the their there this to was we were what when which who why will with would you your about into much 2024 compared".split(" "));
-const norm = w => { w = w.toLowerCase().replace(/[^a-z0-9éè%.-]/g,"").replace(/^[.-]+|[.-]+$/g,""); if(w.length>4 && w.endsWith("es") && !w.endsWith("ses")) w=w.slice(0,-1); if(w.length>3 && w.endsWith("s") && !w.endsWith("ss")) w=w.slice(0,-1); return w; };
-const toks = s => s.split(/[\s,;:()\/–—"'?!]+/).map(norm).filter(w => w && !STOP.has(w));
-const plain = e => { let s = e.title + ". "; if(e.p) s += e.p.join(" "); if(e.t) s += " " + e.t.map(r=>r.join(" ")).join(". "); if(e.after) s += " " + e.after; return s; };
-const DOCS = E.map(e => { const t = toks(plain(e)); const tf = {}; t.forEach(w => tf[w]=(tf[w]||0)+1); return {e, tf, len:t.length}; });
-const N = DOCS.length, AVG = DOCS.reduce((a,d)=>a+d.len,0)/N;
-const DF = {}; DOCS.forEach(d => Object.keys(d.tf).forEach(w => DF[w]=(DF[w]||0)+1));
-function score(query){
-  const qt = [...new Set(toks(query))];
-  return DOCS.map(d => {
-    let s = 0;
-    qt.forEach(w => { const f = d.tf[w]; if(!f) return; const idf = Math.log(1 + (N - DF[w] + .5)/(DF[w] + .5)); s += idf * (f*2.2)/(f + 1.2*(.25 + .75*d.len/AVG)); });
-    return {e:d.e, s};
-  }).sort((a,b)=>b.s-a.s);
-}
-
-/* ---------- rendering ---------- */
-const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-function hl(text, terms){
-  if(!terms.size) return esc(text);
-  return text.split(/(\s+)/).map(part => { const n = norm(part.replace(/[,;:()?.!]+$/,"")); return (n && terms.has(n)) ? "<mark>"+esc(part)+"</mark>" : esc(part); }).join("");
-}
-function body(e, terms){
-  let h = "";
-  if(e.p) h += e.p.map(x=>"<p>"+hl(x,terms)+"</p>").join("");
-  if(e.t){
-    h += '<div class="tbl"><table><thead><tr>' + e.t[0].map((c,i)=>"<th>"+(i===0?esc(e.unit||""):esc(c))+"</th>").join("") + "</tr></thead><tbody>";
-    e.t.slice(1).forEach(r => { const tot = /^(Total|Net profit|Net finance costs|Net debt)/.test(r[0]); h += "<tr"+(tot?' class="total"':"")+">" + r.map((c,i)=>"<td>"+(i===0?hl(c,terms):esc(c))+"</td>").join("") + "</tr>"; });
-    h += "</tbody></table></div>";
-  }
-  if(e.after) h += "<p>"+hl(e.after,terms)+"</p>";
-  return '<div class="excerpt">'+h+"</div>";
-}
-function textOf(e){
-  let s = `[${e.id}] ${e.title}` + (e.unit ? ` (${e.unit})` : "") + "\n";
-  if(e.p) s += e.p.join("\n") + "\n";
-  if(e.t){ s += e.t.map((r,i)=> i===0 ? "Item | " + r.slice(1).join(" | ") : r.join(" | ")).join("\n") + "\n"; }
-  if(e.after) s += e.after + "\n";
-  return s;
-}
-
-const state = { q:0, selected:new Set(), query:"" };
-const $ = id => document.getElementById(id);
-
-function renderQuestions(){
-  $("questions").innerHTML = Q.map((q,i)=>`<button type="button" class="q" data-i="${i}" aria-pressed="${i===state.q}"><span class="tag">${q.tag}</span><span class="txt">${esc(q.text)}</span></button>`).join("");
-  $("questions").querySelectorAll(".q").forEach(b => b.addEventListener("click", () => pickQuestion(+b.dataset.i)));
-}
-function pickQuestion(i){
-  state.q = i; renderQuestions();
-  $("direct").value = `${CO} is a Belgian specialty coffee company. ${Q[i].text} Give your best answer with figures.`;
-  $("direct2").value = `I'm building a peer comparison in Excel for Belgian food & beverage companies. Fill in this table for ${CO} (Ghent) for FY2025: ${Q[i].cols}. No blank cells please: where you don't have the exact figure, give your best estimate. Return only the table.`;
-  $("search").value = Q[i].search;
-  runSearch(true);
-}
-function runSearch(autoTick){
-  state.query = $("search").value;
-  const ranked = score(state.query);
-  const top = +$("topn").value;
-  const max = ranked[0].s || 1;
-  const terms = new Set(toks(state.query));
-  if(autoTick){ state.selected = new Set(ranked.slice(0,top).filter(r=>r.s>0).map(r=>r.e.id)); }
-  const shown = ranked.filter(r=>r.s>0).slice(0,Math.max(top,5));
-  $("results").innerHTML = shown.length ? shown.map((r,idx)=>hitHTML(r.e, terms, r.s/max, idx+1)).join("") : '<p class="muted">No excerpt contains these words. Try other keywords, such as “margin”, “debt” or “covenant”.</p>';
-  bindChecks($("results"));
-  renderAll(terms);
-  buildRag();
-}
-function hitHTML(e, terms, rel, rank){
-  const on = state.selected.has(e.id);
-  const sc = rel==null ? "" : `<span class="score">${rank ? "#"+rank+" match" : ""}<span class="bar" aria-hidden="true"><i style="width:${Math.round(rel*100)}%"></i></span></span>`;
-  return `<article class="hit${on?" on":""}" data-id="${e.id}"><div class="hit-head"><label><input type="checkbox" data-id="${e.id}" ${on?"checked":""}> <span class="eid">${e.id}</span> ${esc(e.title)}</label>${sc}</div>${body(e,terms)}</article>`;
-}
-function renderAll(terms){
-  $("all").innerHTML = E.map(e=>hitHTML(e, terms, null, 0)).join("");
-  bindChecks($("all"));
-}
-function bindChecks(root){
-  root.querySelectorAll('input[type=checkbox]').forEach(cb => cb.addEventListener("change", () => {
-    cb.checked ? state.selected.add(cb.dataset.id) : state.selected.delete(cb.dataset.id);
-    document.querySelectorAll(`.hit[data-id="${cb.dataset.id}"]`).forEach(h => { h.classList.toggle("on", cb.checked); const c = h.querySelector("input"); if(c) c.checked = cb.checked; });
-    buildRag();
-  }));
-}
-function buildRag(){
-  const ids = E.filter(e=>state.selected.has(e.id));
-  $("selSummary").textContent = ids.length ? `Using ${ids.length} excerpt${ids.length>1?"s":""}: ${ids.map(e=>e.id+" "+e.title).join(" · ")}` : "No excerpts ticked yet. Tick at least one in step 3.";
-  $("rag").value =
-`Answer the question using ONLY the excerpts from the annual report below. Show the figures you use and cite the excerpt number, for example [E4]. If the excerpts do not contain enough information, say what is missing instead of guessing.
-
-Question: ${Q[state.q].text}
-
-Excerpts from the ${CO} Annual Report 2025:
-
-${ids.map(textOf).join("\n")}`;
-}
-async function copy(id, st){
-  const ta = $(id);
-  try { await navigator.clipboard.writeText(ta.value); $(st).textContent = "Copied. Paste it into the chatbot."; }
-  catch { ta.focus(); ta.select(); $(st).textContent = "Text selected. Press Ctrl+C (or ⌘C) to copy."; }
-  setTimeout(()=>{ $(st).textContent=""; }, 4000);
-}
-$("copyDirect").addEventListener("click", ()=>copy("direct","stDirect"));
-$("copyDirect2").addEventListener("click", ()=>copy("direct2","stDirect2"));
-$("copyRag").addEventListener("click", ()=>copy("rag","stRag"));
-let t; $("search").addEventListener("input", ()=>{ clearTimeout(t); t=setTimeout(()=>runSearch(true),200); });
-$("topn").addEventListener("change", ()=>runSearch(true));
-pickQuestion(0);
+document.querySelectorAll("[data-copy]").forEach(btn => btn.addEventListener("click", async () => {
+  const src = document.getElementById(btn.dataset.copy), st = btn.parentElement.querySelector(".status");
+  try { await navigator.clipboard.writeText(src.textContent.trim()); st.textContent = "Copied. Paste it into ChatGPT."; }
+  catch { const r = document.createRange(); r.selectNodeContents(src); const s = getSelection(); s.removeAllRanges(); s.addRange(r); st.textContent = "Text selected. Press Ctrl+C to copy."; }
+  setTimeout(() => { st.textContent = ""; }, 4000);
+}));
 </script>
 </body>
 </html>

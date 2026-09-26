@@ -11,7 +11,8 @@ A trap question shows that a well-cited answer can still be wrong when retrieval
 
 ## Files
 
-- `index.html`: the participant page (questions, report search, copy-ready prompts).
+- `index.html`: the main participant exercise: upload a dirty sales CSV to ChatGPT, with copy-ready prompts and what good and bad answers look like.
+- `rag.html`: the RAG exercise (questions, report search, prompts with excerpts) and the data downloads.
 - `data/`: the report as CSV files (five financial tables in EUR thousand, plus all 14 text excerpts), linked from the participant page for download. UTF-8 with BOM so Excel shows € and accents correctly.
 - `data/sales-ledger-2025.csv`: a deliberately dirty sales export (duplicates, subtotal rows, Belgian number format, mixed dates, inconsistent names, credit notes as positives) for the dirty-data exercise. Regenerate with `python tools/make_ledger.py`.
 - `facilitator-mf25-key.html`: run sheet, answer key and debrief points. Not linked from the participant page; don't share its address with participants.
