@@ -114,6 +114,27 @@ td.t{font-family:var(--mono);font-size:13px;white-space:nowrap;color:var(--muted
   </section>
 
   <section>
+    <h2>Dirty data, simple version (Q1 sales)</h2>
+    <p class="lede"><code>data/sales-q1-2025.csv</code>: 41 tidy-looking rows, five columns, no visible mess. Participants upload it and ask:</p>
+    <div class="card">
+      <p class="qtext">“What was our total revenue in Q1 2025, and who is our biggest customer?”</p>
+      <div class="answer"><strong>Correct answer:</strong> €186,902. Biggest customer: Grand Hotel Scheldezicht, €55,104 (then Kantoorpark Zuid NV €43,061).</div>
+      <div class="tbl"><table>
+        <thead><tr><th>Trap</th><th>Where</th><th>Effect</th></tr></thead>
+        <tbody>
+          <tr><td>Duplicate rows</td><td>Last 5 rows: Kantoorpark invoices repeated (same invoice numbers)</td><td>+€36,590; Kantoorpark becomes #1 with €79,651</td></tr>
+          <tr><td>Cancelled invoices</td><td>3 Hotel Ter Aa rows with Status “Cancelled”</td><td>+€19,588 if counted</td></tr>
+        </tbody>
+      </table></div>
+      <dl class="kv">
+        <dt>Possible wrong answers</dt><dd>€243,079 (both traps missed) · €223,492 (duplicates missed, the pattern from our test of the big file) · €206,490 (cancelled counted). Any answer naming Kantoorpark Zuid NV as #1 missed the duplicates.</dd>
+        <dt>Follow-up</dt><dd><span class="say">“Before I send this to my manager: are there any data quality issues in this file that could affect these numbers?”</span></dd>
+        <dt>Not tested yet</dt><dd>Run it once before the session. If ChatGPT catches both traps first time, say so and move the duplicates further into the file.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
     <h2>Extra: dirty data (sales ledger)</h2>
     <p class="lede"><code>data/sales-ledger-2025.csv</code> looks like an ordinary export, but it merges the head-office accounting system with the cafés' till system and contains six traps. Participants upload it to ChatGPT and ask:</p>
     <div class="card">

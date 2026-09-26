@@ -1,0 +1,42 @@
+﻿Invoice no,Date,Customer,Amount (EUR),Status
+INV-1001,2025-01-03,Co-work Dok,2519.41,Paid
+INV-1002,2025-01-04,Brasserie De Klok,3684.30,Paid
+INV-1003,2025-01-05,Kantoorpark Zuid NV,6418.76,Paid
+INV-1004,2025-01-05,Hotel Aurelia,5299.86,Paid
+INV-1005,2025-01-06,Grand Hotel Scheldezicht,8471.96,Paid
+INV-1006,2025-01-08,Hotel Ter Aa,6762.65,Paid
+INV-1007,2025-01-09,Brasserie De Klok,4104.89,Paid
+INV-1008,2025-01-12,Grand Hotel Scheldezicht,9490.78,Paid
+INV-1009,2025-01-18,Hotel Ter Aa,5942.62,Cancelled
+INV-1010,2025-01-19,Kantoorpark Zuid NV,7101.83,Paid
+INV-1011,2025-01-20,Hotel Aurelia,5784.60,Paid
+INV-1012,2025-01-20,Co-work Dok,2660.14,Paid
+INV-1013,2025-02-03,Grand Hotel Scheldezicht,8721.53,Paid
+INV-1014,2025-02-04,Hotel Aurelia,4426.19,Paid
+INV-1015,2025-02-06,Kantoorpark Zuid NV,7557.43,Paid
+INV-1016,2025-02-08,Brasserie De Klok,4260.16,Paid
+INV-1017,2025-02-09,Grand Hotel Scheldezicht,9966.59,Paid
+INV-1018,2025-02-15,Kantoorpark Zuid NV,7490.32,Paid
+INV-1019,2025-02-19,Hotel Ter Aa,6239.10,Paid
+INV-1020,2025-02-19,Co-work Dok,2455.03,Paid
+INV-1021,2025-02-20,Hotel Aurelia,4650.12,Paid
+INV-1022,2025-02-22,Brasserie De Klok,4039.22,Open
+INV-1023,2025-02-23,Hotel Ter Aa,7068.91,Cancelled
+INV-1024,2025-02-23,Co-work Dok,2543.52,Open
+INV-1025,2025-03-07,Kantoorpark Zuid NV,8021.22,Open
+INV-1026,2025-03-11,Hotel Ter Aa,6889.89,Paid
+INV-1027,2025-03-11,Brasserie De Klok,3662.23,Paid
+INV-1028,2025-03-15,Hotel Aurelia,4858.35,Paid
+INV-1029,2025-03-15,Co-work Dok,2731.21,Paid
+INV-1030,2025-03-16,Grand Hotel Scheldezicht,9060.37,Paid
+INV-1031,2025-03-16,Brasserie De Klok,4337.29,Paid
+INV-1032,2025-03-17,Co-work Dok,2240.58,Open
+INV-1033,2025-03-18,Hotel Ter Aa,6575.99,Cancelled
+INV-1034,2025-03-18,Hotel Aurelia,4587.39,Paid
+INV-1035,2025-03-20,Grand Hotel Scheldezicht,9393.05,Open
+INV-1036,2025-03-24,Kantoorpark Zuid NV,6471.72,Paid
+INV-1003,2025-01-05,Kantoorpark Zuid NV,6418.76,Paid
+INV-1010,2025-01-19,Kantoorpark Zuid NV,7101.83,Paid
+INV-1015,2025-02-06,Kantoorpark Zuid NV,7557.43,Paid
+INV-1018,2025-02-15,Kantoorpark Zuid NV,7490.32,Paid
+INV-1025,2025-03-07,Kantoorpark Zuid NV,8021.22,Open
