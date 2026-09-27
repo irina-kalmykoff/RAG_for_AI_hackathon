@@ -217,6 +217,23 @@ footer a{color:var(--accent)}
           <p class="hint">€33,604,627 − €1,135,432 − €4,124,123 = €28,345,072.</p>
         </div>
       </details>
+      <details>
+        <summary>Why does VAT make the numbers wrong?</summary>
+        <div class="inner">
+          <p><strong>VAT isn't our money.</strong> When a webshop customer pays €30.13 for a bag of espresso beans, €24.90 is our revenue and €5.23 is VAT that we collect for the tax authorities and pay on to them. Revenue in the accounts is always <em>excluding</em> VAT.</p>
+          <p><strong>The two systems report differently.</strong> The ERP invoices businesses and exports amounts <em>without</em> VAT. The webshop sells to consumers, shows prices <em>with</em> VAT, and exports the amount the customer paid. Both columns are called “Net amount (EUR)”, so the file looks consistent.</p>
+          <div class="tbl"><table>
+            <thead><tr><th>10 bags of espresso beans</th><th class="r">Amount in file</th><th class="r">Of which VAT</th><th class="r">Our revenue</th></tr></thead>
+            <tbody>
+              <tr><td>Sold to a hotel (ERP)</td><td class="r">€249.00</td><td class="r">—</td><td class="r">€249.00</td></tr>
+              <tr><td>Sold in the webshop</td><td class="r">€301.30</td><td class="r">€52.29</td><td class="r">€249.01</td></tr>
+            </tbody>
+          </table></div>
+          <p><strong>Adding the column together mixes the two.</strong> For the webshop, 21% on top of every sale gets counted as revenue. Over the year that is €6,542,249.34 in the file against €5,406,817.64 of real webshop revenue: <strong>€1,135,431.70 too much.</strong></p>
+          <p><strong>Why the AI didn't notice.</strong> Nothing in the file is inconsistent: every row has Qty × Unit price = Net amount, so all its checks pass. The only clue is that the same product costs 21% more in one system, and you only see that if you know what our prices are. That's business knowledge, not data quality.</p>
+          <p class="hint">Tip: to remove 21% VAT, divide by 1.21 (€301.30 ÷ 1.21 = €249.01). Subtracting 21% (€301.30 × 0.79 = €238.03) takes off too much.</p>
+        </div>
+      </details>
     </div>
   </section>
 
