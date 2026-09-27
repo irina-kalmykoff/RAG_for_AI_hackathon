@@ -1,0 +1,65 @@
+You are the assistant in a company's document Q&A tool. The tool found the relevant data in sales_2025.csv. Answer the user's question based on it.
+
+--- Relevant data from sales_2025.csv ---
+Order ID,Date,Customer,Region,Product,Qty,Unit price (EUR),Net amount (EUR)
+SO-70042,2025-01-01,Hôtel Meuse Palace,Wallonia,Capsules box 100,23,38.00,874.00
+SO-70010,2025-01-02,Brasserie De Klok,Brussels,Espresso beans 1kg,7,24.90,174.30
+SO-70045,2025-01-02,Bureaux Namur Centre,Wallonia,Machine rental (month),1,145.00,145.00
+SO-70020,2025-01-03,Bistro Oude Markt,Flanders,Filter coffee 1kg,5,19.50,97.50
+SO-70023,2025-01-03,Vergaderzalen Linde,Brussels,Filter coffee 1kg,28,19.50,546.00
+SO-70031,2025-01-04,Café Noord BV,Flanders,Capsules box 100,52,38.00,1976.00
+SO-70033,2025-01-04,Café Noord BV,Flanders,Filter coffee 1kg,49,19.50,955.50
+SO-70005,2025-01-05,Kantoorpark Zuid NV,Flanders,Capsules box 100,23,38.00,874.00
+SO-70003,2025-01-06,Grand Hotel Scheldezicht,Flanders,Filter coffee 1kg,16,19.50,312.00
+SO-70009,2025-01-06,Hotel Ter Aa,Flanders,Filter coffee 1kg,45,19.50,877.50
+SO-70036,2025-01-07,Kantoren Meir Plaza,Flanders,Filter coffee 1kg,39,19.50,760.50
+SO-70011,2025-01-08,Brasserie De Klok,Brussels,Capsules box 100,16,38.00,608.00
+SO-70032,2025-01-08,Café Noord BV,Flanders,Espresso beans 1kg,12,24.90,298.80
+SO-70019,2025-01-10,Bistro Oude Markt,Flanders,Capsules box 100,36,38.00,1368.00
+SO-70022,2025-01-10,Vergaderzalen Linde,Brussels,Espresso beans 1kg,58,24.90,1444.20
+SO-70030,2025-01-10,Hôtel des Ardennes,Wallonia,Machine rental (month),1,145.00,145.00
+SO-70029,2025-01-11,Hôtel des Ardennes,Wallonia,Capsules box 100,21,38.00,798.00
+SO-70038,2025-01-13,Brasserie Sablon,Brussels,Capsules box 100,45,38.00,1710.00
+SO-70039,2025-01-13,Brasserie Sablon,Brussels,Espresso beans 1kg,11,24.90,273.90
+SO-70017,2025-01-14,Co-work Dok,Flanders,Capsules box 100,21,38.00,798.00
+SO-70027,2025-01-14,Restaurant Veldzicht,Wallonia,Capsules box 100,29,38.00,1102.00
+SO-70037,2025-01-14,Brasserie Sablon,Brussels,Machine rental (month),2,145.00,290.00
+SO-70004,2025-01-15,Kantoorpark Zuid NV,Flanders,Machine rental (month),1,145.00,145.00
+SO-70015,2025-01-16,Hotel Aurelia,Brussels,C
+ia,Filter coffee 1kg,21,19.50,409.50
+SO-70537,2025-12-25,Hôtel Meuse Palace,Wallonia,Filter coffee 1kg,22,19.50,429.00
+SO-70498,2025-12-26,Grand Hotel Scheldezicht,Flanders,Capsules box 100,40,38.00,1520.00
+SO-70527,2025-12-26,Café Noord BV,Flanders,Capsules box 100,27,38.00,1026.00
+SO-70535,2025-12-26,Hôtel Meuse Palace,Wallonia,Capsules box 100,31,38.00,1178.00
+SO-70540,2025-12-26,Bureaux Namur Centre,Wallonia,Capsules box 100,15,38.00,570.00
+SO-70513,2025-12-27,Co-work Dok,Flanders,Espresso beans 1kg,24,24.90,597.60
+SO-70496,2025-12-28,Grand Hotel Scheldezicht,Flanders,Machine rental (month),3,145.00,435.00
+
+70512,2025-12-07,Co-work Dok,Flanders,Machine rental (month),1,145.00,145.00
+SO-70516,2025-12-07,Bistro Oude Markt,Flanders,Espresso beans 1kg,39,24.90,971.10
+SO-70524,2025-12-07,Hôtel des Ardennes,Wallonia,Espresso beans 1kg,48,24.90,1195.20
+SO-70529,2025-12-08,Kantoren Meir Plaza,Flanders,Filter coffee 1kg,46,19.50,897.00
+SO-70526,2025-12-09,Café Noord BV,Flanders,Filter coffee 1kg,54,19.50,1053.00
+SO-70509,2025-12-10,Hotel Aurelia,Brussels,Espresso beans 1kg,24,24.90,597.60
+SO-70511,2025-12-10,Co-work Dok,Flanders,Filter coffee 1kg,16,19.50,312.00
+SO-70519,2025-12-11,Vergaderzalen Linde,Brussels,Capsules box 100,56,38.00,2128.00
+SO-70497,2025-12-14,Grand Hotel Scheldezicht,Flanders,Espresso beans 1kg,38,24.90,946.20
+SO-70508,2025-12-15,Hotel Aurelia,Brussels,Filter coffee 1kg,5,19.50,97.50
+SO-70521,2025-12-15,Restaurant Veldzicht,Wallonia,Filter coffee 1kg,53,19.50,1033.50
+SO-70510,2025-12-16,Hotel Aurelia,Brussels,Machine rental (month),3,145.00,435.00
+SO-70505,2025-12-17,Brasserie De Klok,Brussels,Espresso beans 1kg,56,24.90,1394.40
+SO-70532,2025-12-17,Brasserie Sablon,Brussels,Espresso beans 1kg,32,24.90,796.80
+SO-70533,2025-12-17,Brasserie Sablon,Brussels,Filter coffee 1kg,8,19.50,156.00
+SO-70528,2025-12-19,Café Noord BV,Flanders,Machine rental (month),1,145.00,145.00
+SO-70514,2025-12-21,Bistro Oude Markt,Flanders,Capsules box 100,15,38.00,570.00
+SO-70531,2025-12-22,Kantoren Meir Plaza,Flanders,Espresso beans 1kg,44,24.90,1095.60
+SO-70507,2025-12-23,Brasserie De Klok,Brussels,Capsules box 100,26,38.00,988.00
+SO-70515,2025-12-23,Bistro Oude Markt,Flanders,Filter coffee 1kg,60,19.50,1170.00
+SO-70520,2025-12-23,Restaurant Veldzicht,Wallonia,Capsules box 100,25,38.00,950.00
+SO-70523,2025-12-23,Hôtel des Ardennes,Wallonia,Filter coffee 1kg,11,19.50,214.50
+SO-70502,2025-12-24,Hotel Ter Aa,Flanders,Machine rental (month),2,145.00,290.00
+SO-70518,2025-12-24,Vergaderzalen Linde,Brussels,Espresso beans 1kg,23,24.90,572.70
+SO-70538,2025-12-24,Bureaux Namur Centre,Wallon
+--- End of data ---
+
+User question: Which region generated the most revenue in 2025, and how much?

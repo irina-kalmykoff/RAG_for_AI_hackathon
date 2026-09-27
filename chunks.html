@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Three Pages of the Ledger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600&display=swap">
+<style>
+:root{
+  --bg:#F4F6F4; --surface:#FFFFFF; --sunk:#EAEEEB; --ink:#1B2420; --muted:#5A6862; --line:#D5DCD7;
+  --accent:#0E6B5F; --accent-ink:#FFFFFF; --accent-soft:#DDEFEA;
+  --good:#1D6B34; --good-soft:#E1F2E4; --bad:#A3322A; --bad-soft:#FBE4E1;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){color-scheme:dark;
+    --bg:#111614; --surface:#18201D; --sunk:#0D1210; --ink:#E3E9E6; --muted:#9AA8A2; --line:#2C3833;
+    --accent:#4CC0AE; --accent-ink:#06201B; --accent-soft:#1B3631;
+    --good:#7FD69A; --good-soft:#15301E; --bad:#F2918A; --bad-soft:#3A1B18;}
+}
+:root[data-theme="dark"]{color-scheme:dark;
+  --bg:#111614; --surface:#18201D; --sunk:#0D1210; --ink:#E3E9E6; --muted:#9AA8A2; --line:#2C3833;
+  --accent:#4CC0AE; --accent-ink:#06201B; --accent-soft:#1B3631;
+  --good:#7FD69A; --good-soft:#15301E; --bad:#F2918A; --bad-soft:#3A1B18;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 var(--sans)}
+.wrap{max-width:880px;margin:0 auto;padding-inline:20px;padding-block:28px 64px;display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{text-wrap:balance;margin:0;line-height:1.2}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(26px,4vw,36px)}
+h2{font-size:19px;font-weight:600}
+p,ul,ol{margin:0}
+ul,ol{padding-left:20px;display:flex;flex-direction:column;gap:4px}
+code{font-family:var(--mono);font-size:.92em}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
+header{display:flex;flex-direction:column;gap:12px}
+.brief{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 16px;max-width:70ch;display:flex;flex-direction:column;gap:8px}
+.hint{color:var(--muted);max-width:70ch}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:14px}
+.flow span{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.flow b{color:var(--muted);font-weight:400}
+.btn{font:inherit;font-weight:500;border-radius:6px;padding:9px 16px;cursor:pointer;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);text-decoration:none;display:inline-block}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.status{font-size:13px;color:var(--accent);font-weight:500;min-height:1.2em}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tab{all:unset;cursor:pointer;padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);display:flex;flex-direction:column;gap:2px;flex:1 1 220px}
+.tab small{color:var(--muted);font-weight:500}
+.tab[aria-selected="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.tab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:14px}
+.sub{font-size:14px;font-weight:600}
+pre.chunks{margin:0;font-family:var(--mono);font-size:12.5px;line-height:1.5;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:10px 12px;max-height:260px;overflow:auto;white-space:pre}
+pre.chunks mark{background:var(--bad-soft);color:var(--bad);border-radius:2px}
+.check{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.verdict{border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.verdict h3{font-size:14px;font-weight:600}
+.verdict.good{background:var(--good-soft)} .verdict.good h3{color:var(--good)}
+.verdict.bad{background:var(--bad-soft)} .verdict.bad h3{color:var(--bad)}
+.verdict ul{font-size:14px}
+.n{font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
+details{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 16px}
+details summary{cursor:pointer;font-weight:600;color:var(--accent)}
+details[open] summary{margin-bottom:10px}
+details .inner{display:flex;flex-direction:column;gap:10px}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:6px 12px 6px 0;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;color:var(--muted);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.takeaway{border-left:3px solid var(--accent);padding:4px 0 4px 14px;font-family:var(--serif);font-size:18px;max-width:62ch}
+footer{color:var(--muted);font-size:13px}
+@media (max-width:620px){.check{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Workshop exercise · AI on a big spreadsheet</span>
+    <h1>Three pages of the ledger</h1>
+    <div class="brief">
+      <p>Marlow &amp; Finch Coffee Roasters (fictional) keeps its 2025 sales in one file: <strong>540 orders</strong>. The company's new “ask your documents” assistant lets anyone type a question about the file.</p>
+      <p>Behind the scenes, the assistant does what many such tools do: it cuts the file into pieces of fixed size, searches for the pieces that best match your question, and passes <strong>only those three pieces</strong> to the chatbot.</p>
+    </div>
+    <div class="flow" aria-label="How the assistant works">
+      <span>sales-2025.csv, 540 rows</span><b>→</b><span>cut into 23 pieces</span><b>→</b><span>keyword search picks 3</span><b>→</b><span>chatbot answers from those 3</span>
+    </div>
+  </header>
+
+  <section style="display:flex;flex-direction:column;gap:10px">
+    <h2>1. Download the full file</h2>
+    <p class="hint">You'll use it at the end to check the chatbot's answers in Excel.</p>
+    <div class="row"><a class="btn" href="data/sales-2025-full.csv" download>Download sales-2025-full.csv</a></div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:12px">
+    <h2>2. Pick a question</h2>
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" aria-selected="true" data-q="q1"><small>Question 1</small>Total 2025 revenue from Hotel Ter Aa</button>
+      <button class="tab" role="tab" aria-selected="false" data-q="q2"><small>Question 2</small>Region with the most revenue</button>
+      <button class="tab" role="tab" aria-selected="false" data-q="q3"><small>Question 3</small>Capsule boxes sold in December</button>
+    </div>
+
+    <div class="panel">
+      <p class="sub" id="qtext"></p>
+      <div>
+        <p class="sub">What the assistant retrieved <span class="hint" style="font-weight:400">(cut-off rows marked red)</span></p>
+        <pre class="chunks" id="chunks">Loading…</pre>
+      </div>
+      <div>
+        <p class="sub">3. Paste this into ChatGPT, in a new chat, with no file attached</p>
+        <p class="hint">It holds exactly what the assistant would send the chatbot: an instruction, the three pieces, and the question.</p>
+      </div>
+      <div class="row"><button class="btn" id="copy" type="button">Copy prompt</button><a class="btn ghost" id="dl" href="#" download>Download as .txt</a><span class="status" id="st" role="status"></span></div>
+      <div class="check">
+        <div class="verdict good"><h3>✅ Good answer</h3><ul id="good"></ul></div>
+        <div class="verdict bad"><h3>❌ It was fooled if you see</h3><ul id="bad"></ul></div>
+      </div>
+      <details>
+        <summary>4. Check it yourself in Excel</summary>
+        <div class="inner" id="excel"></div>
+      </details>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:10px">
+    <h2>5. Now give ChatGPT the whole file</h2>
+    <p class="hint">New chat: attach <code>sales-2025-full.csv</code> and ask the same question. With every row available, ChatGPT can calculate instead of reading fragments. Compare with your answer from step 3.</p>
+  </section>
+
+  <details>
+    <summary>Why did it go wrong?</summary>
+    <div class="inner">
+      <ul>
+        <li><strong>Only 3 of 23 pieces:</strong> a total needs every row. The search found about 80 of 540 rows.</li>
+        <li><strong>No header:</strong> only the first piece has the column names, so the other pieces are bare numbers.</li>
+        <li><strong>Rows cut in half:</strong> fixed-size pieces ignore row boundaries, so rows at the edges lose their amount or their customer.</li>
+        <li><strong>Words vs. data:</strong> the file says <code>2025-12-…</code>, never “December”, so a keyword search for December finds nothing useful.</li>
+        <li><strong>No warning:</strong> the chatbot can't see what was left out, so a partial sum can look like the answer.</li>
+      </ul>
+    </div>
+  </details>
+
+  <p class="takeaway">Asking a document assistant to total a big spreadsheet is like asking a colleague who read three random pages of your ledger.</p>
+
+  <footer>All data is fictional. Test answers came from an AI model given the same three pieces; your chatbot may answer differently, which is part of the lesson.</footer>
+</div>
+<script>
+const CASES = {
+  q1: {
+    good: ['Total <span class="n">€31,876.00</span> from <span class="n">36</span> orders', 'Or: it says clearly that it only sees part of the data and can\'t give the full-year total'],
+    bad: ['A confident total such as <span class="n">€7,786.10</span> or <span class="n">€5,848.10</span> (our test runs)', '“The true total may be slightly higher”: it is four times higher'],
+    excel: 'Filter <strong>Customer</strong> on Hotel Ter Aa and look at the sum of <strong>Net amount (EUR)</strong>, or use <code>=SUMIF(C:C,"Hotel Ter Aa",H:H)</code>. Answer: <span class="n">€31,876.00</span>, 36 orders.'
+  },
+  q2: {
+    good: ['<strong>Flanders</strong> <span class="n">€193,799.30</span>', 'then Wallonia <span class="n">€110,385.80</span>, Brussels <span class="n">€106,586.80</span>', 'Or: it says it can\'t total the year from these pieces'],
+    bad: ['Flanders with about <span class="n">€19,636</span> (our test run): right region, a tenth of the amount', 'Brussels in second place'],
+    excel: 'Insert a PivotTable: <strong>Region</strong> in Rows, <strong>Net amount (EUR)</strong> in Values. Answer: Flanders <span class="n">€193,799.30</span> · Wallonia <span class="n">€110,385.80</span> · Brussels <span class="n">€106,586.80</span>.'
+  },
+  q3: {
+    good: ['<span class="n">235</span> boxes', 'Or: it says the pieces contain no December orders (what happened in our test)'],
+    bad: ['Any number of boxes: none of the retrieved rows are from December', 'An answer built from January, May or July rows'],
+    excel: 'Filter <strong>Product</strong> on “Capsules box 100” and <strong>Date</strong> on December 2025, then sum <strong>Qty</strong>. Or <code>=SUMIFS(F:F,E:E,"Capsules box 100",B:B,"&gt;="&amp;DATE(2025,12,1))</code>. Answer: <span class="n">235</span> boxes.'
+  }
+};
+const $ = id => document.getElementById(id);
+const cache = {};
+let current = "q1";
+const esc = s => s.replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+function markChunks(text){
+  const body = text.split("--- Relevant data from sales_2025.csv ---\n")[1].split("\n--- End of data ---")[0];
+  return body.split("\n").filter(l => l.trim()).map(l => {
+    const ok = /^SO-\d+,2025-\d\d-\d\d,[^,]+,[^,]+,[^,]+,\d+,\d+\.\d\d,\d+\.\d\d$/.test(l) || l.startsWith("Order ID,");
+    return ok ? esc(l) : "<mark>" + esc(l || "(empty)") + "</mark>";
+  }).join("\n");
+}
+async function load(q){
+  current = q;
+  document.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-selected", t.dataset.q === q));
+  const c = CASES[q];
+  $("good").innerHTML = c.good.map(x => "<li>" + x + "</li>").join("");
+  $("bad").innerHTML = c.bad.map(x => "<li>" + x + "</li>").join("");
+  $("excel").innerHTML = "<p>" + c.excel + "</p>";
+  $("dl").href = "data/chunk-prompt-" + q + ".txt";
+  try {
+    if (!cache[q]) cache[q] = (await (await fetch("data/chunk-prompt-" + q + ".txt")).text()).replace(/\r\n/g, "\n");
+    if (q !== current) return;
+    const t = cache[q];
+    $("qtext").textContent = "“" + t.split("User question: ")[1].trim() + "”";
+    $("chunks").innerHTML = markChunks(t);
+  } catch (e) {
+    $("chunks").textContent = "Could not load the retrieved pieces. Open this page through a web server, not as a local file.";
+  }
+}
+document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => load(t.dataset.q)));
+$("copy").addEventListener("click", async () => {
+  const t = cache[current] || "";
+  try { await navigator.clipboard.writeText(t); $("st").textContent = "Copied. Paste it into a new ChatGPT chat."; }
+  catch { const r = document.createRange(); r.selectNodeContents($("chunks")); getSelection().removeAllRanges(); getSelection().addRange(r); $("st").textContent = "Copy failed. Use Download as .txt instead."; }
+  setTimeout(() => { $("st").textContent = ""; }, 4000);
+});
+load("q1");
+</script>
+</body>
+</html>

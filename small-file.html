@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Can You Trust the Total?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600&display=swap">
+<style>
+:root{
+  --bg:#F4F6F4; --surface:#FFFFFF; --sunk:#EAEEEB; --ink:#1B2420; --muted:#5A6862; --line:#D5DCD7;
+  --accent:#0E6B5F; --accent-ink:#FFFFFF; --accent-soft:#DDEFEA;
+  --good:#1D6B34; --good-soft:#E1F2E4; --bad:#A3322A; --bad-soft:#FBE4E1;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){color-scheme:dark;
+    --bg:#111614; --surface:#18201D; --sunk:#0D1210; --ink:#E3E9E6; --muted:#9AA8A2; --line:#2C3833;
+    --accent:#4CC0AE; --accent-ink:#06201B; --accent-soft:#1B3631;
+    --good:#7FD69A; --good-soft:#15301E; --bad:#F2918A; --bad-soft:#3A1B18;}
+}
+:root[data-theme="dark"]{color-scheme:dark;
+  --bg:#111614; --surface:#18201D; --sunk:#0D1210; --ink:#E3E9E6; --muted:#9AA8A2; --line:#2C3833;
+  --accent:#4CC0AE; --accent-ink:#06201B; --accent-soft:#1B3631;
+  --good:#7FD69A; --good-soft:#15301E; --bad:#F2918A; --bad-soft:#3A1B18;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 var(--sans)}
+.wrap{max-width:860px;margin:0 auto;padding-inline:20px;padding-block:28px 64px;display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{text-wrap:balance;margin:0;line-height:1.2}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(26px,4vw,36px)}
+h2{font-size:19px;font-weight:600}
+p,ul{margin:0}
+ul{padding-left:20px;display:flex;flex-direction:column;gap:4px}
+code{font-family:var(--mono);font-size:.92em}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
+header{display:flex;flex-direction:column;gap:10px}
+.lede{max-width:66ch;color:var(--muted)}
+.brief{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 16px;max-width:66ch}
+.step{display:grid;grid-template-columns:40px 1fr;gap:14px;align-items:start}
+.num{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:600;background:var(--sunk);border:1px solid var(--line)}
+.body{display:flex;flex-direction:column;gap:12px;min-width:0}
+.hint{color:var(--muted);max-width:70ch}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.prompt{font-family:var(--mono);font-size:14px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:10px 12px;white-space:pre-wrap}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{font:inherit;font-weight:500;border-radius:6px;padding:9px 16px;cursor:pointer;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);text-decoration:none;display:inline-block}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.status{font-size:13px;color:var(--accent);font-weight:500;min-height:1.2em}
+.check{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.verdict{border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.verdict h3{font-size:14px;font-weight:600}
+.verdict.good{background:var(--good-soft)} .verdict.good h3{color:var(--good)}
+.verdict.bad{background:var(--bad-soft)} .verdict.bad h3{color:var(--bad)}
+.verdict ul{font-size:14px}
+.num-tag{font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
+details{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 16px}
+details summary{cursor:pointer;font-weight:600;color:var(--accent)}
+details[open] summary{margin-bottom:10px}
+details .inner{display:flex;flex-direction:column;gap:10px}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:6px 12px 6px 0;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;color:var(--muted);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.takeaway{border-left:3px solid var(--accent);padding:4px 0 4px 14px;font-family:var(--serif);font-size:18px;max-width:60ch}
+footer{color:var(--muted);font-size:13px;display:flex;flex-direction:column;gap:6px}
+footer a{color:var(--accent)}
+@media (max-width:600px){.step{grid-template-columns:1fr}.num{width:32px;height:32px}.check{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Workshop exercise · AI and dirty data</span>
+    <h1>Can you trust the total?</h1>
+    <div class="brief">You work in finance at Marlow &amp; Finch Coffee Roasters, a fictional Belgian coffee company. Your manager needs <strong>Q1 revenue and the biggest customer</strong> by 5 pm. You have the sales export from the accounting system, and you ask ChatGPT to do the sums.</div>
+  </header>
+
+  <section class="step">
+    <div class="num" aria-hidden="true">1</div>
+    <div class="body">
+      <h2>Download the export</h2>
+      <p class="hint">41 rows, five columns. You may glance at it in Excel, but don't change anything yet.</p>
+      <div class="row"><a class="btn" href="data/sales-q1-2025.csv" download>Download sales-q1-2025.csv</a></div>
+    </div>
+  </section>
+
+  <section class="step">
+    <div class="num" aria-hidden="true">2</div>
+    <div class="body">
+      <h2>Upload it to ChatGPT and ask</h2>
+      <p class="hint">Open a new chat, attach the file with the <strong>+</strong> button, paste this prompt and send.</p>
+      <div class="panel">
+        <div class="prompt" id="p1">Here is our Q1 2025 sales export. What was our total revenue in Q1 2025, and who is our biggest customer?</div>
+        <div class="row"><button class="btn" type="button" data-copy="p1">Copy prompt</button><span class="status" role="status"></span></div>
+      </div>
+      <div class="check">
+        <div class="verdict good">
+          <h3>✅ Good answer</h3>
+          <ul>
+            <li>Total revenue <span class="num-tag">€186,902</span></li>
+            <li>Biggest customer <strong>Grand Hotel Scheldezicht</strong> <span class="num-tag">(€55,104)</span></li>
+            <li>It mentions removing <strong>duplicate invoices</strong> and leaving out <strong>cancelled</strong> ones</li>
+          </ul>
+        </div>
+        <div class="verdict bad">
+          <h3>❌ It was fooled if you see</h3>
+          <ul>
+            <li><span class="num-tag">€243,079</span>, <span class="num-tag">€223,492</span> or <span class="num-tag">€206,490</span></li>
+            <li><strong>Kantoorpark Zuid NV</strong> as the biggest customer</li>
+            <li>No word about data problems, just a confident total</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="step">
+    <div class="num" aria-hidden="true">3</div>
+    <div class="body">
+      <h2>Ask it to check its own work</h2>
+      <p class="hint">In the same chat, send this follow-up. Did the numbers change?</p>
+      <div class="panel">
+        <div class="prompt" id="p2">Before I send this to my manager: are there any data quality issues in this file that could affect these numbers?</div>
+        <div class="row"><button class="btn" type="button" data-copy="p2">Copy prompt</button><span class="status" role="status"></span></div>
+      </div>
+      <div class="check">
+        <div class="verdict good">
+          <h3>✅ Good answer</h3>
+          <ul>
+            <li>Finds <strong>5 duplicate invoices</strong> for Kantoorpark Zuid NV (same invoice numbers, e.g. INV-1003)</li>
+            <li>Finds <strong>3 cancelled invoices</strong> for Hotel Ter Aa</li>
+            <li>Corrects the total to <span class="num-tag">€186,902</span></li>
+          </ul>
+        </div>
+        <div class="verdict bad">
+          <h3>❌ Still fooled if</h3>
+          <ul>
+            <li>It says the data looks clean</li>
+            <li>It finds only one of the two problems</li>
+            <li>It repeats its first answer</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="step">
+    <div class="num" aria-hidden="true">4</div>
+    <div class="body">
+      <h2>Find the problems yourself in Excel</h2>
+      <p class="hint">Three minutes. Two things are wrong with this export. Can you spot them without the AI?</p>
+      <details>
+        <summary>Hints</summary>
+        <div class="inner">
+          <ul>
+            <li>Sort by <strong>Invoice no</strong>. Does any number appear twice?</li>
+            <li>Filter the <strong>Status</strong> column. Which values are there, and should they all count as revenue?</li>
+          </ul>
+        </div>
+      </details>
+      <details>
+        <summary>Show the answer</summary>
+        <div class="inner">
+          <div class="tbl"><table>
+            <thead><tr><th>Problem</th><th>Where</th><th>Effect on the total</th></tr></thead>
+            <tbody>
+              <tr><td>Duplicate rows</td><td>The last 5 rows repeat Kantoorpark Zuid NV invoices already in the file (a second export pasted below the first)</td><td>+€36,590, and Kantoorpark wrongly becomes the #1 customer</td></tr>
+              <tr><td>Cancelled invoices</td><td>3 Hotel Ter Aa rows with Status “Cancelled”</td><td>+€19,588</td></tr>
+            </tbody>
+          </table></div>
+          <p>€186,902 + €36,590 + €19,588 = €243,079, the total you get by adding up the whole Amount column.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <p class="takeaway">The AI answered from the data it was given, confidently. It could find the problems, but only when someone asked. Checking is still your job.</p>
+
+  <details>
+    <summary>Harder version: a full-year ledger with six traps</summary>
+    <div class="inner">
+      <p class="hint">209 rows merged from two systems: duplicates, subtotal rows, Belgian number format, mixed date formats, inconsistent channel names and credit notes stored as positive amounts.</p>
+      <div class="row"><a class="btn" href="data/sales-ledger-2025.csv" download>Download sales-ledger-2025.csv</a></div>
+      <div class="panel">
+        <div class="prompt" id="p3">Here is our 2025 sales ledger export. What was total revenue in 2025, revenue per channel, and who are our top 3 wholesale customers?</div>
+        <div class="row"><button class="btn" type="button" data-copy="p3">Copy prompt</button><span class="status" role="status"></span></div>
+      </div>
+      <div class="check">
+        <div class="verdict good">
+          <h3>✅ Good answer</h3>
+          <ul>
+            <li>Total <span class="num-tag">€3,302,956</span></li>
+            <li>Wholesale <span class="num-tag">€1,117,601</span> · Online <span class="num-tag">€659,200</span> · Cafés <span class="num-tag">€1,526,155</span></li>
+            <li>Top 3: Grand Hotel Scheldezicht, Kantoorpark Zuid NV, Hotel Ter Aa</li>
+          </ul>
+        </div>
+        <div class="verdict bad">
+          <h3>❌ It was fooled if you see</h3>
+          <ul>
+            <li><span class="num-tag">€3,441,247</span> total or <strong>Kantoorpark Zuid NV</strong> at #1 (missed the duplicates)</li>
+            <li>More than three channels, or Cafés near €0</li>
+            <li>Any total above €3.4m</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <footer>
+    <p>Marlow &amp; Finch and all figures are fictional.</p>
+    <p>Second exercise: <a href="rag.html">Ask the annual report (RAG)</a>.</p>
+  </footer>
+</div>
+<script>
+document.querySelectorAll("[data-copy]").forEach(btn => btn.addEventListener("click", async () => {
+  const src = document.getElementById(btn.dataset.copy), st = btn.parentElement.querySelector(".status");
+  try { await navigator.clipboard.writeText(src.textContent.trim()); st.textContent = "Copied. Paste it into ChatGPT."; }
+  catch { const r = document.createRange(); r.selectNodeContents(src); const s = getSelection(); s.removeAllRanges(); s.addRange(r); st.textContent = "Text selected. Press Ctrl+C to copy."; }
+  setTimeout(() => { st.textContent = ""; }, 4000);
+}));
+</script>
+</body>
+</html>
