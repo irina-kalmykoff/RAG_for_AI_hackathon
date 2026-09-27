@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
-<title>Marlow &amp; Finch Revenue Case</title>
+<title>Marlow &amp; Finch Board Report</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600&display=swap">
 <style>
 :root{
   --bg:#F4F6F4; --surface:#FFFFFF; --sunk:#EAEEEB; --ink:#1B2420; --muted:#5A6862; --line:#D5DCD7;
   --accent:#0E6B5F; --accent-ink:#FFFFFF; --accent-soft:#DDEFEA;
-  --good:#1D6B34; --good-soft:#E1F2E4; --bad:#A3322A; --bad-soft:#FBE4E1; --warn:#8A5A00; --warn-soft:#FBEFD6;
+  --good:#1D6B34; --good-soft:#E1F2E4; --bad:#A3322A; --bad-soft:#FBE4E1;
   --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
   --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
@@ -20,12 +20,12 @@
   :root:not([data-theme="light"]){color-scheme:dark;
     --bg:#111614; --surface:#18201D; --sunk:#0D1210; --ink:#E3E9E6; --muted:#9AA8A2; --line:#2C3833;
     --accent:#4CC0AE; --accent-ink:#06201B; --accent-soft:#1B3631;
-    --good:#7FD69A; --good-soft:#15301E; --bad:#F2918A; --bad-soft:#3A1B18; --warn:#F0C06A; --warn-soft:#3A2C10;}
+    --good:#7FD69A; --good-soft:#15301E; --bad:#F2918A; --bad-soft:#3A1B18;}
 }
 :root[data-theme="dark"]{color-scheme:dark;
   --bg:#111614; --surface:#18201D; --sunk:#0D1210; --ink:#E3E9E6; --muted:#9AA8A2; --line:#2C3833;
   --accent:#4CC0AE; --accent-ink:#06201B; --accent-soft:#1B3631;
-  --good:#7FD69A; --good-soft:#15301E; --bad:#F2918A; --bad-soft:#3A1B18; --warn:#F0C06A; --warn-soft:#3A2C10;}
+  --good:#7FD69A; --good-soft:#15301E; --bad:#F2918A; --bad-soft:#3A1B18;}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 var(--sans)}
 .wrap{max-width:880px;margin:0 auto;padding-inline:20px;padding-block:28px 64px;display:flex;flex-direction:column;gap:30px}
@@ -40,7 +40,7 @@ header{display:flex;flex-direction:column;gap:12px}
 .brief{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px 18px;max-width:70ch;display:flex;flex-direction:column;gap:8px}
 .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
 .fact{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 14px;display:flex;flex-direction:column;gap:2px}
-.fact b{font-size:20px;font-variant-numeric:tabular-nums}
+.fact b{font-size:20px}
 .fact span{font-size:13px;color:var(--muted)}
 .step{display:grid;grid-template-columns:40px 1fr;gap:14px;align-items:start}
 .num{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:600;background:var(--sunk);border:1px solid var(--line)}
@@ -50,6 +50,7 @@ header{display:flex;flex-direction:column;gap:12px}
 .prompt{font-family:var(--mono);font-size:14px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:10px 12px;white-space:pre-wrap}
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .btn{font:inherit;font-weight:500;border-radius:6px;padding:9px 16px;cursor:pointer;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);text-decoration:none;display:inline-block}
+.btn.ghost{background:transparent;color:var(--accent)}
 .btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 .status{font-size:13px;color:var(--accent);font-weight:500;min-height:1.2em}
 .compare{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -57,13 +58,13 @@ header{display:flex;flex-direction:column;gap:12px}
 .card h3{font-size:14px;font-weight:600}
 .card.good{background:var(--good-soft)} .card.good h3{color:var(--good)}
 .card.bad{background:var(--bad-soft)} .card.bad h3{color:var(--bad)}
-.card.warn{background:var(--warn-soft)} .card.warn h3{color:var(--warn)}
 .figs{display:flex;flex-direction:column;gap:2px}
 .figs div{display:flex;justify-content:space-between;gap:12px;font-variant-numeric:tabular-nums}
 .figs div span:first-child{color:var(--muted)}
 .figs div span:last-child{font-weight:600;text-align:right}
+.figs div.hl span{color:var(--bad);font-weight:600}
 blockquote{margin:0;border-left:3px solid currentColor;padding:2px 0 2px 12px;font-size:14px;font-style:italic}
-.card.bad blockquote{color:var(--bad)} .card.warn blockquote{color:var(--warn)}
+.card.bad blockquote{color:var(--bad)}
 .card p{font-size:14px}
 details{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 16px}
 details summary{cursor:pointer;font-weight:600;color:var(--accent)}
@@ -83,54 +84,48 @@ footer a{color:var(--accent)}
 <body>
 <div class="wrap">
   <header>
-    <span class="eyebrow">Workshop exercise · part 1</span>
-    <h1>Marlow &amp; Finch use case: 2025 revenue for the budget meeting</h1>
+    <span class="eyebrow">Workshop exercise · part 2</span>
+    <h1>Marlow &amp; Finch use case: the board report</h1>
     <div class="brief">
-      <p>You work in finance at Marlow &amp; Finch Coffee Roasters, a fictional Belgian coffee company. Tomorrow is the budget meeting, and your manager asks two things: <strong>What was our total revenue in 2025, and which was our best month?</strong></p>
-      <p>You have the full-year sales export. It's far too big to check by eye, so you upload it to ChatGPT. The AI has <em>every</em> row. What could go wrong?</p>
+      <p>After part 1, IT sends you a <strong>cleaner export</strong>: no subtotal rows, no duplicates, one consistent format. You now prepare the figures for the board: <strong>total revenue for the group, and our top 5 customers.</strong></p>
+      <p>The data is clean this time. Surely the AI gets it right?</p>
     </div>
     <div class="facts">
       <div class="fact"><b>2025</b><span>full-year sales export</span></div>
-      <div class="fact"><b>2</b><span>source systems (ERP and webshop)</span></div>
-      <div class="fact"><b>1</b><span>question from your manager</span></div>
+      <div class="fact"><b>Clean</b><span>no totals, no duplicates, one format</span></div>
+      <div class="fact"><b>2</b><span>questions for the board</span></div>
     </div>
   </header>
 
   <section class="step">
     <div class="num" aria-hidden="true">1</div>
     <div class="body">
-      <h2>Download the export</h2>
-      <p class="hint">Don't open or fix it yet. Upload it the way you'd normally use ChatGPT on a busy day.</p>
-      <div class="row"><a class="btn" href="data/sales-2025-export.csv" download>Download sales-2025-export.csv (18 MB)</a></div>
+      <h2>Download the new export</h2>
+      <p class="hint">Start a <strong>new chat</strong> in ChatGPT for this part, so it doesn't remember part 1.</p>
+      <div class="row"><a class="btn" href="data/sales-2025-export-v2.csv" download>Download sales-2025-export-v2.csv (6 MB)</a></div>
     </div>
   </section>
 
   <section class="step">
     <div class="num" aria-hidden="true">2</div>
     <div class="body">
-      <h2>Upload it to ChatGPT and ask</h2>
-      <p class="hint">New chat, attach the file with <strong>+</strong>, paste this prompt and send. Note the two numbers you get.</p>
+      <h2>Ask for total revenue</h2>
+      <p class="hint">Attach the file with <strong>+</strong>, paste this prompt and send.</p>
       <div class="panel">
-        <div class="prompt" id="p1">Here is our 2025 sales export. What was our total revenue in 2025, and which was our best month?</div>
+        <div class="prompt" id="p1">Here is our 2025 sales export. What was our total revenue in 2025?</div>
         <div class="row"><button class="btn" type="button" data-copy="p1">Copy prompt</button><span class="status" role="status"></span></div>
       </div>
       <div class="compare">
         <div class="card good">
           <h3>✅ Correct answer</h3>
-          <div class="figs">
-            <div><span>Total revenue 2025</span><span>€80,395,894</span></div>
-            <div><span>Best month</span><span>December</span></div>
-            <div><span>December revenue</span><span>€9,033,711</span></div>
-          </div>
+          <div class="figs"><div><span>Group revenue 2025</span><span>€28,345,072</span></div></div>
+          <p>Excluding VAT, excluding sales to our own subsidiary.</p>
         </div>
         <div class="card bad">
           <h3>❌ What ChatGPT answered in our test</h3>
-          <div class="figs">
-            <div><span>Total revenue 2025</span><span>€161,219,579</span></div>
-            <div><span>Best month</span><span>November</span></div>
-            <div><span>November revenue</span><span>€9,736,660</span></div>
-          </div>
-          <p>Twice the real revenue, the wrong best month, and not a word about the data.</p>
+          <div class="figs"><div><span>Total revenue 2025</span><span>€33,604,627</span></div></div>
+          <blockquote>“That is the sum of the Net amount (EUR) across all 74,597 sales rows.”</blockquote>
+          <p>€5.3 million too high.</p>
         </div>
       </div>
     </div>
@@ -139,30 +134,33 @@ footer a{color:var(--accent)}
   <section class="step">
     <div class="num" aria-hidden="true">3</div>
     <div class="body">
-      <h2>Ask it to check its own work</h2>
-      <p class="hint">In the same chat, send this follow-up. Does the answer become correct?</p>
+      <h2>Ask for the top 5 customers</h2>
+      <p class="hint">Same chat.</p>
       <div class="panel">
-        <div class="prompt" id="p2">Before I send this to my manager: are there any data quality issues in this file that could affect these numbers?</div>
+        <div class="prompt" id="p2">Who are our top 5 customers?</div>
         <div class="row"><button class="btn" type="button" data-copy="p2">Copy prompt</button><span class="status" role="status"></span></div>
       </div>
       <div class="compare">
         <div class="card good">
           <h3>✅ Correct answer</h3>
           <div class="figs">
-            <div><span>Total revenue 2025</span><span>€80,395,894</span></div>
-            <div><span>Best month</span><span>December</span></div>
+            <div><span>1. Webshop customers</span><span>€5,406,818</span></div>
+            <div><span>2. Kantoorcentrum Antwerpen</span><span>€304,392</span></div>
+            <div><span>3. Bistro Brugge</span><span>€289,847</span></div>
+            <div><span>4. Bakkerij Brugge</span><span>€282,728</span></div>
+            <div><span>5. Brasserie Gent</span><span>€277,532</span></div>
           </div>
-          <p>It should find three problems: monthly TOTAL rows, webshop amounts it couldn't read, and one week of orders that appears twice.</p>
         </div>
-        <div class="card warn">
-          <h3>⚠️ What ChatGPT answered in our test</h3>
+        <div class="card bad">
+          <h3>❌ What ChatGPT answered in our test</h3>
           <div class="figs">
-            <div><span>Total revenue 2025</span><span>€82,997,123</span></div>
-            <div><span>Best month</span><span>November</span></div>
+            <div><span>1. Webshop customer</span><span>€6,542,249</span></div>
+            <div class="hl"><span>2. Marlow &amp; Finch Retail BV</span><span>€4,124,123</span></div>
+            <div><span>3. Kantoorcentrum Antwerpen</span><span>€304,392</span></div>
+            <div><span>4. Bistro Brugge</span><span>€289,847</span></div>
+            <div><span>5. Bakkerij Brugge</span><span>€282,728</span></div>
           </div>
-          <p>It found the TOTAL rows and the webshop amounts. It even found the duplicate orders, then explained them away:</p>
-          <blockquote>“These appear to be line-level duplicates… I would not automatically remove them.”</blockquote>
-          <blockquote>“The good news is that the best month remains November.”</blockquote>
+          <p>Our second-biggest “customer” is… us.</p>
         </div>
       </div>
     </div>
@@ -171,15 +169,38 @@ footer a{color:var(--accent)}
   <section class="step">
     <div class="num" aria-hidden="true">4</div>
     <div class="body">
-      <h2>Find the problems yourself in Excel</h2>
-      <p class="hint">Open the file in Excel. Three things are wrong with this export. How many can you find in five minutes?</p>
+      <h2>Ask it to check its own work</h2>
+      <p class="hint">This helped a bit in part 1. Does it help here?</p>
+      <div class="panel">
+        <div class="prompt" id="p3">Before I send this to my manager: are there any data quality issues in this file that could affect these numbers?</div>
+        <div class="row"><button class="btn" type="button" data-copy="p3">Copy prompt</button><span class="status" role="status"></span></div>
+      </div>
+      <div class="compare">
+        <div class="card good">
+          <h3>✅ Correct answer</h3>
+          <p>It should warn that webshop amounts look like they include VAT, and that Marlow &amp; Finch Retail BV is probably our own company.</p>
+        </div>
+        <div class="card bad">
+          <h3>❌ What ChatGPT answered in our test</h3>
+          <p>It ran 16 checks (missing values, duplicates, dates, even Qty × Unit price) and found nothing:</p>
+          <blockquote>“I don't see any data-quality issue that would currently invalidate the €33.60M revenue.”</blockquote>
+          <blockquote>“I would be comfortable describing the figures as: 2025 revenue: €33,604,626.84.”</blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="step">
+    <div class="num" aria-hidden="true">5</div>
+    <div class="body">
+      <h2>Find it yourself in Excel</h2>
+      <p class="hint">The data really is clean. Two <em>business rules</em> are broken. Which ones?</p>
       <details>
         <summary>Hints</summary>
         <div class="inner">
           <ul>
-            <li>Filter the <strong>Customer</strong> column. Is every value really a customer?</li>
-            <li>Filter <strong>Source system</strong>. Do the rows from both systems look the same?</li>
-            <li>Select the <strong>Order ID</strong> column › Conditional Formatting › Highlight Duplicate Values. Where are the duplicates, and what dates do they have?</li>
+            <li>Make a PivotTable: <strong>Product</strong> in Rows, <strong>Source system</strong> in Columns, <strong>average of Unit price</strong> in Values. Does the same product cost the same in both systems?</li>
+            <li>Sort the customers by revenue. Do you recognise every name?</li>
           </ul>
         </div>
       </details>
@@ -187,43 +208,40 @@ footer a{color:var(--accent)}
         <summary>Show the answer</summary>
         <div class="inner">
           <div class="tbl"><table>
-            <thead><tr><th>Problem</th><th>Where in the file</th><th>Effect if not handled</th></tr></thead>
+            <thead><tr><th>Business rule</th><th>What's in the file</th><th class="r">Effect</th></tr></thead>
             <tbody>
-              <tr><td><strong>Monthly TOTAL rows</strong></td><td>12 rows (“TOTAL JANUARY 2025” …) at the end of each month, from row 12,790</td><td class="r">+€79.3m, counted twice</td></tr>
-              <tr><td><strong>Webshop in Belgian format</strong></td><td>18,000 rows from row 167,015: amounts like <code>99,60</code>, dates like <code>20/02/2025</code></td><td class="r">−€1.1m, silently dropped</td></tr>
-              <tr><td><strong>Black Friday week exported twice</strong></td><td>The orders of 20–30 November appear again from row 185,015, same Order IDs</td><td class="r">+€2.6m; November overtakes December</td></tr>
+              <tr><td><strong>Revenue excludes VAT</strong></td><td>The webshop reports amounts <em>including</em> 21% VAT, in a column that is still called “Net amount”. Espresso beans: €24.90 in the ERP, €30.13 in the webshop (24.90 × 1.21).</td><td class="r">+€1,135,432</td></tr>
+              <tr><td><strong>Group revenue excludes sales within the group</strong></td><td>Marlow &amp; Finch Retail BV is our own café subsidiary. Sales to it are internal transfers, not revenue for the group.</td><td class="r">+€4,124,123</td></tr>
             </tbody>
           </table></div>
-          <p class="hint">ChatGPT's first answer counted the TOTAL rows and the duplicate week and dropped the webshop: €80.4m + €79.3m + €2.6m − €1.1m = €161.2m.</p>
+          <p class="hint">€33,604,627 − €1,135,432 − €4,124,123 = €28,345,072.</p>
         </div>
       </details>
     </div>
   </section>
 
   <section class="step">
-    <div class="num" aria-hidden="true">5</div>
+    <div class="num" aria-hidden="true">6</div>
     <div class="body">
-      <h2>Ask better</h2>
-      <p class="hint">Tell the AI what you know about your data, and make it check before it calculates. Try this in a new chat with the same file.</p>
+      <h2>Give it the rules</h2>
+      <p class="hint">The AI can't know your business rules unless you tell it. Try this in a new chat with the same file.</p>
       <div class="panel">
-        <div class="prompt" id="p3">Here is our 2025 sales export. Each Order ID should appear only once, and only real customer orders count as revenue.
+        <div class="prompt" id="p4">Here is our 2025 sales export. Please apply these business rules:
+- Revenue is always excluding VAT. ERP amounts exclude VAT; webshop amounts include 21% VAT.
+- Marlow &amp; Finch Retail BV (C-0001) is our own subsidiary. Leave it out of group revenue and customer rankings.
 
-Before calculating anything, check the file and list any data quality issues: rows that aren't orders, duplicate Order IDs, amounts or dates in different formats, and differences between source systems. Show me what you found and how you'll handle each one.
-
-Then tell me our total revenue in 2025 and our best month.</div>
-        <div class="row"><button class="btn" type="button" data-copy="p3">Copy prompt</button><span class="status" role="status"></span></div>
+What was our group revenue in 2025, and who are our top 5 customers?</div>
+        <div class="row"><button class="btn" type="button" data-copy="p4">Copy prompt</button><span class="status" role="status"></span></div>
       </div>
-      <p class="hint">Not tested yet in our runs. Compare what you get with the correct answer above.</p>
+      <p class="hint">Not tested yet in our runs. Compare with the correct answers above.</p>
     </div>
   </section>
 
-  <p class="takeaway">The AI read every row, but it only looked at a few. It sounded sure, it was wrong, and a budget built on it would chase a Black Friday that never happened.</p>
-
-  <div class="panel" style="flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-items:center"><div><h2>Part 2: the board report</h2><p class="hint">A new, clean export. Does the AI get it right this time?</p></div><a class="btn" href="part-2.html">Continue to part 2 →</a></div>
+  <p class="takeaway">Every check passed. The data was fine; the rules were missing. The AI can check your data, but only you know your business.</p>
 
   <footer>
     <p>Marlow &amp; Finch and all figures are fictional. The ChatGPT answers are from a test in September 2026; your chatbot may answer differently.</p>
-    <p>More exercises: <a href="small-file.html">A small messy file</a> · <a href="rag.html">Ask the annual report (RAG)</a></p>
+    <p><a href="index.html">← Back to part 1</a></p>
   </footer>
 </div>
 <script>
